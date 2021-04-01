@@ -6,7 +6,6 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
 import org.eclipse.milo.opcua.stack.core.types.enumerated.TimestampsToReturn;
 
 public class ReadImpl {
-
     private String identifier;
 
     public ReadImpl(String identifier){
@@ -29,5 +28,5 @@ public class ReadImpl {
         }
         return readValue;
     }
-    
+
 }

@@ -1,4 +1,5 @@
 core\domain\SocketClient$2.class
 core\domain\SocketClient$1.class
+core\domain\SocketClient$3.class
 core\domain\SocketClient.class
 core\presentation\Client.class

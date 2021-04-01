@@ -3,7 +3,6 @@ package utility;
 import common.services.IDataProvider;
 
 public class Utilities implements IDataProvider{
-
     @Override
     public void writeToEndpoint(String identifier, Object value) {
         new WriteImpl(identifier, value).write();
@@ -18,5 +17,4 @@ public class Utilities implements IDataProvider{
     public void subscribeToEndpoint() {
         new SubscribeImpl().subscribe();
     }
-    
 }

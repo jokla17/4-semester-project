@@ -1,14 +1,12 @@
 package utility;
 
 import java.util.List;
-
 import org.eclipse.milo.opcua.sdk.client.OpcUaClient;
 import org.eclipse.milo.opcua.sdk.client.api.config.OpcUaClientConfigBuilder;
 import org.eclipse.milo.opcua.stack.client.DiscoveryClient;
 import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
 
 public class ServerConnection {
-    
     private String opcServerAddress = "opc.tcp://localhost:4840";
     private OpcUaClient session = establishConnection();
     
