@@ -1,0 +1,32 @@
+footer {
+    background: url(../../assets/footer.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    color: var(--light-third-text-color);
+    font-size: 0.95em;
+}
+
+h3 {
+    font-weight: bold;
+    margin: 40px 0 10px 0;
+    z-index: 1;
+}
+
+p {
+    text-align: center;
+    font-style: italic;
+    line-height: 30px;
+    width: 100%;
+    max-width: 600px;
+    z-index: 1;
+}
+
+span {
+    display: inline-block;
+    position: absolute;
+    height: inherit;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.75);
+}

@@ -1,0 +1,18 @@
+span > span {
+    width: 42px;
+    background-color: var(--light-switch-color);
+    margin: 0 10px 0 10px;
+    padding: 4px;
+    border-radius: 25px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 0.7em;
+    color: #666766;
+}
+
+input[type=radio] {
+    height: 17px; 
+    width: 17px
+}

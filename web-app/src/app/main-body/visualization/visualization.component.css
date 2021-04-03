@@ -1,0 +1,29 @@
+.rtvbox {
+    width: 100%;
+    max-width: 280px;
+    padding: 25px 0 25px 0;
+}
+
+span span {
+    width: 80px;
+}
+
+span span img {
+    width: 50px;
+}
+
+p {
+    font-size: 0.7em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 7px;
+    width: 100%;
+    max-width: 100px;
+    text-align: center;
+}
+
+h4 {
+    font-size: 1.7em;
+    margin-left: 15px;
+}
+

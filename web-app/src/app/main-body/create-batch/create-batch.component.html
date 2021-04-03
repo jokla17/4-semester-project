@@ -1,15 +1,11 @@
-<h3>Create batch header</h3>
+<div class="container enableFlex columnFlex centerFlex shadow">
+    <h3>Create batch</h3>
 
-<form [formGroup]="messageForm" (ngSubmit)="sendMessage('start')">
-    <label>Batch id:</label>
-    <input type="number" formControlName="batchId" placeholder="Enter a batch Id"><br> 
-    <label>Product type:</label>
-    <input type="number" formControlName="productType" placeholder="Enter a product type"><br>
-    <label>Amount:</label>
-    <input type="number" formControlName="productAmount" placeholder="Enter an amount"><br>
-    <label>Speed:</label>
-    <input type="number" formControlName="machineSpeed" placeholder="Enter a speed"><br>
-    <input type="submit" value="start">
-</form>   
-
-
+    <form class="enableFlex rowFlex centerFlex wrapFlex " [formGroup]="messageForm" (ngSubmit)="sendMessage('start')">
+        <input class="shadow" type="number" formControlName="batchId" placeholder="Enter a batch Id">
+        <input class="shadow" type="number" formControlName="productType" placeholder="Enter a product type">
+        <input class="shadow" type="number" formControlName="productAmount" placeholder="Enter an amount">
+        <input class="shadow" type="number" formControlName="machineSpeed" placeholder="Enter a speed">
+        <input class="btnDefault btnSuccess shadow" type="submit" value="start">
+    </form>
+</div>

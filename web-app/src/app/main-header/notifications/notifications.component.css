@@ -1,0 +1,31 @@
+span {
+    background-color: var(--light-container-bg-color);
+    width: 27px;
+    height: 25px;
+    padding: 5px;
+    margin-left: 25px;
+    border-radius: 12px;
+}
+
+span:hover {
+    background-color: var(--light-bell-alert-bg-color);
+    cursor: pointer;  
+}
+
+#alertReminder {
+    background-color: var(--light-bell-alert-bg-color);
+    position: absolute;
+    margin: 0 0 25px 25px;
+    padding: 3px 6px 3px 6px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.7em;
+    color: var(--light-secondary-text-color);
+    z-index: 1;
+}
+
+img {
+    position: absolute;
+    width: 19px;
+
+}

@@ -10,8 +10,5 @@ export class MainHeaderComponent {
 
     public getName(firstname: String, lastname: String): void {
         console.log(firstname, lastname)
-
     }
-
-
 }

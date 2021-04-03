@@ -1,0 +1,17 @@
+.container {
+    margin-left: 20px;
+}
+
+span {
+    background-color: var(--light-primary-meter-bg-color);
+    width: 100%;
+    border-radius: 12px;
+    padding: 10px 0 10px 0;
+}
+
+span h3 {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1em;
+    color: var(--light-secondary-text-color);
+}
