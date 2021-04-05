@@ -16,8 +16,6 @@ export class CreateBatchComponent {
         machineSpeed : new FormControl({value : null}), 
     })
 
-    private messages: String[] = this.socketIOService.getMessages();
-
     constructor(
         private socketIOService: SocketIOService,
         private formBuilder: FormBuilder
@@ -26,20 +24,8 @@ export class CreateBatchComponent {
 
     public sendMessage(request: String): void {
         switch (request) {
-            default:
+            case "start":
                 this.socketIOService.sendRequest(this.messageForm.value);
-                break;
-            case 'stop':
-                this.socketIOService.sendRequest('stop');
-                break;
-            case 'abort':
-                this.socketIOService.sendRequest('abort');
-                break;
-            case 'reset':
-                this.socketIOService.sendRequest('reset');
-                break;
-            case 'clear':
-                this.socketIOService.sendRequest('clear');
                 break;
         }        
     }

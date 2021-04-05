@@ -2,41 +2,36 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 import { SocketIOService } from './socketio.service'; 
 
 import { AppComponent } from './app.component';
-import { MainFooterComponent } from './main-footer/main-footer.component';
 import { MainHeaderComponent } from './main-header/main-header.component';
-import { CreateBatchComponent } from './main-body/create-batch/create-batch.component';
-import { MainBodyComponent } from './main-body/main-body.component';
-import { VisualizationComponent } from './main-body/visualization/visualization.component';
+import { MainNavigationComponent } from './main-navigation/main-navigation.component';
+import { MainFooterComponent } from './main-footer/main-footer.component';
+import { MainDashboardComponent } from './main-dashboard/main-dashboard.component'
+import { CreateBatchComponent } from './main-dashboard/create-batch/create-batch.component';
+import { VisualizationComponent } from './main-dashboard/visualization/visualization.component';
 import { SwitchColorComponent } from './main-header/switch-color/switch-color.components';
 import { SearchBarComponent } from './main-header/search-bar/search-bar.component';
 import { NotificationsComponent } from './main-header/notifications/notifications.component';
-import { OperationsComponent } from './main-body/operations/operations.component';
-import { ResourcesComponent } from './main-body/resources/resources.component';
-import { MaintenanceComponent } from './main-body/maintenance/maintenance.component';
-import { NavigationComponent } from './main-navigation/main-navigation.component';
-
-const routes: Routes = [
-  { path: 'dashboard', component: CreateBatchComponent},
-  { path: 'dashboard', component: VisualizationComponent},
-  { path: 'dashboard', component: SwitchColorComponent},
-  { path: 'dashboard', component: SearchBarComponent},
-  { path: 'dashboard', component: NotificationsComponent},
-  { path: 'dashboard', component: OperationsComponent},
-  { path: 'dashboard', component: ResourcesComponent},
-  { path: 'dashboard', component: MaintenanceComponent}
-];
+import { OperationsComponent } from './main-dashboard/operations/operations.component';
+import { ResourcesComponent } from './main-dashboard/resources/resources.component';
+import { MaintenanceComponent } from './main-dashboard/maintenance/maintenance.component';
+import { MainBatchReports } from './main-batch-reports/main-batch-reports.component';
+import { MainStatisticalAnalysis } from './main-statistical-analysis/main-statistical-analysis.component';
+import { AssetsService } from './assets.service';
 
 @NgModule({
   declarations: [
-    AppComponent, 
-    MainHeaderComponent,
+    AppComponent, // Root 
+
+    MainHeaderComponent, // Default page components
+    MainNavigationComponent,
     MainFooterComponent,
-    MainBodyComponent,
+
+    MainDashboardComponent, // Dashboard page components
     CreateBatchComponent,
     VisualizationComponent,
     SwitchColorComponent,
@@ -45,15 +40,23 @@ const routes: Routes = [
     OperationsComponent,
     ResourcesComponent,
     MaintenanceComponent,
-    NavigationComponent
+
+    MainBatchReports, // Batch reports page components
+
+    MainStatisticalAnalysis, // Statistical analysis page components
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot([
+      { path: '', component: MainDashboardComponent },
+      { path: 'dashboard', component: MainDashboardComponent },
+      { path: 'batch-reports', component: MainBatchReports },
+      { path: 'statistical-analysis', component: MainBatchReports }
+    ]),
   ],
-  providers: [SocketIOService],
-  bootstrap: [AppComponent]
+  providers: [ SocketIOService, AssetsService ],
+  bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {}

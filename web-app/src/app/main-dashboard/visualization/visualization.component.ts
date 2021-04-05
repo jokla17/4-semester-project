@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AssetsService } from 'src/app/assets.service';
 import { SocketIOService } from '../../socketio.service';
 
 @Component({
@@ -6,14 +7,13 @@ import { SocketIOService } from '../../socketio.service';
     templateUrl: './visualization.component.html',
     styleUrls: ['./visualization.component.css']
 })
-
 export class VisualizationComponent {
+    public messages : String[];
 
-    public messages: String[] = this.socketIOService.getMessages();
-    
-    
     constructor(
-        private socketIOService: SocketIOService
-        ) {}
-
+        private socketIOService : SocketIOService,
+        public assetsService : AssetsService
+    ){
+        this.messages = this.socketIOService.getMessages();
+    }
 }

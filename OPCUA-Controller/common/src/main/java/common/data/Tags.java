@@ -14,11 +14,11 @@ public class Tags {
         put("::Program:Cube.Status.StateCurrent",         "State");
         put("::Program:Cube.Status.MachSpeed",            "Speed");
         put("::Program:Cube.Status.CurMachSpeed",         "CurSpeed");
-        put("::Program:Cube.Status.Parameter[0]",         "BatchId");
-        put("::Program:Cube.Status.Parameter[1]",         "Products");
-        put("::Program:Cube.Status.Parameter[2]",         "Humidity");
-        put("::Program:Cube.Status.Parameter[3]",         "Temperature");
-        put("::Program:Cube.Status.Parameter[4]",         "Vibration");
+        put("::Program:Cube.Status.Parameter[0].Value",         "BatchId");
+        put("::Program:Cube.Status.Parameter[1].Value",         "Products");
+        put("::Program:Cube.Status.Parameter[2].Value",         "Humidity");
+        put("::Program:Cube.Status.Parameter[3].Value",         "Temperature");
+        put("::Program:Cube.Status.Parameter[4].Value",         "Vibration");
 
         put( "::Program:Cube.Command.Parameter[0].Value", "SetBatchId");
         put( "::Program:Cube.Command.Parameter[1].Value", "SetType");

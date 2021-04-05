@@ -1,8 +1,9 @@
 header {
-    background-color: #dfe4ea;
+    background-color: var(--header-bg-color);
     padding: 15px 0 15px 0;
 }
 
 header img {
     width: 180px;
 }
+

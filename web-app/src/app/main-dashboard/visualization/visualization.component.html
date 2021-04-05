@@ -1,73 +1,70 @@
 <div class="container shadow">
     <h3 class="enableFlex centerFlex">Real time visualization</h3>
    
-    <div class="enableFlex flexRow spaceAroundFlex wrapFlex">
+    <div *ngFor="let message of messages | slice:(messages.length-1):messages.length" class="enableFlex flexRow spaceAroundFlex wrapFlex">
         <span class="enableFlex rowFlex centerFlex rtvbox">
             <span class="enableFlex columnFlex centerFlex">
-                <img src="assets/icons/temperature-icon.png">
+                <img src="{{ assetsService.temperatureIcon }}">
                 <p>Temperature</p>
             </span>
-            <h4>0.0</h4>
+            <h4>{{ message.Temperature || 0 }}</h4>
         </span>
         <span class="enableFlex rowFlex centerFlex rtvbox">
             <span class="enableFlex columnFlex centerFlex">
-                <img src="assets/icons/batch-id-icon.png">
+                <img src="{{ assetsService.batchIdIcon }}">
                 <p>Batch id</p>
             </span>
-            <h4>0.0</h4>
+            <h4>{{ message.BatchId || 0 }}</h4>
         </span>
         <span class="enableFlex rowFlex centerFlex rtvbox">
             <span class="enableFlex columnFlex centerFlex">
-                <img src="assets/icons/produced-icon.png">
+                <img src="{{ assetsService.producedIcon }}">
                 <p>Produced</p>
             </span>
-            <h4>0.0</h4>
+            <h4>{{ message.ProdProcessedCount || 0 }}</h4>
         </span>
         <span class="enableFlex rowFlex centerFlex rtvbox">
             <span class="enableFlex columnFlex centerFlex">
-                <img src="assets/icons/humidity-icon.png">
+                <img src="{{ assetsService.humidityIcon }}">
                 <p>Humidity</p>
             </span>
-            <h4>0.0</h4>
+            <h4>{{ message.Humidity || 0 }}</h4>
         </span>
         <span class="enableFlex rowFlex centerFlex rtvbox">
             <span class="enableFlex columnFlex centerFlex">
-                <img src="assets/icons/amount-to-produce-icon.png">
+                <img src="{{ assetsService.amountToProduceIcon }}">
                 <p>Amount to produce</p>
             </span>
-            <h4>0.0</h4>
+            <h4>{{ message.Products || 0 }}</h4>
         </span>
         <span class="enableFlex rowFlex centerFlex rtvbox">
             <span class="enableFlex columnFlex centerFlex">
-                <img src="assets/icons/acceptable-products-icon.png">
+                <img src="{{ assetsService.acceptableProductsIcon }}">
                 <p>Acceptable products</p>
             </span>
-            <h4>0.0</h4>
+            <h4>{{ message.ProdProcessedCount || 0 }}</h4>
         </span>
         <span class="enableFlex rowFlex centerFlex rtvbox">
             <span class="enableFlex columnFlex centerFlex">
-                <img src="assets/icons/vibration-icon.png">
+                <img src="{{ assetsService.vibrationIcon }}">
                 <p>Vibration</p>
             </span>
-            <h4>0.0</h4>
+            <h4>{{ message.Vibration || 0 }}</h4>
         </span>
         <span class="enableFlex rowFlex centerFlex rtvbox">
             <span class="enableFlex columnFlex centerFlex">
-                <img src="assets/icons/products-per-minute-icon.png">
+                <img src="{{ assetsService.productsPerMinuteIcon }}">
                 <p>Product per minute</p>
             </span>
-            <h4>0.0</h4>
+            <h4>{{ message.CurSpeed || 0 | number: '1.0-0' }}</h4>
         </span>
         <span class="enableFlex rowFlex centerFlex rtvbox">
             <span class="enableFlex columnFlex centerFlex">
-                <img src="assets/icons/defect-products-icon.png">
+                <img src="{{ assetsService.defectProductsIcon }}">
                 <p>Defect products</p>
             </span>
-            <h4>0.0</h4>
+            <h4>{{ message.ProdDefectiveCount || 0 }}</h4>
         </span>
     </div>
 </div>
 
-<div *ngFor="let message of messages | slice:(messages.length-1):messages.length">
-    {{message}}
-</div>

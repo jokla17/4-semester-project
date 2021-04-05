@@ -1,7 +1,0 @@
-input[type="number"] {
-    border: 2px solid var(--light-input-border-color);
-    padding: 10px;
-    border-radius: 12px; 
-    margin: 0 5px 0 5px;
-    font-size: 0.8em;
-}

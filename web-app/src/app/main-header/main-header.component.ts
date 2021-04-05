@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AssetsService } from '../assets.service';
 
 @Component({
     selector: 'app-main-header',
@@ -7,8 +8,7 @@ import { Component } from '@angular/core';
 })
 
 export class MainHeaderComponent {
-
-    public getName(firstname: String, lastname: String): void {
-        console.log(firstname, lastname)
-    }
+    constructor(
+        public assetsService : AssetsService
+    ) {}
 }

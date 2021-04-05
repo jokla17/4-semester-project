@@ -1,15 +1,27 @@
-span > span {
+div > div  {
     width: 42px;
-    background-color: var(--light-switch-color);
+    background-color: var(--switch-bg-color);
     margin: 0 10px 0 10px;
     padding: 4px;
     border-radius: 25px;
 }
 
+#dot  {
+    border-radius: 25px;
+    padding: 4px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--switch-color);
+}
+
+#dot:hover {
+    cursor: pointer;
+}
+
 label {
     font-weight: bold;
     font-size: 0.7em;
-    color: #666766;
+    color: var(--switch-color);
 }
 
 input[type=radio] {

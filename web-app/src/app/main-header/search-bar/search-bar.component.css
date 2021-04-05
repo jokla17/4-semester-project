@@ -4,9 +4,14 @@ input {
     margin-left: 25px;
     border-radius: 25px;
     padding-left: 45px;
-    background-color: var(--light-search-bg-color);
+    background-color: var(--search-bg-color);
+    color: var(--third-text-color);
     box-shadow: inset 0px 0px 5px rgba(68,68,68,0.1);
     font-size: 0.9em;
+}
+
+input::placeholder {
+    color: var(--third-text-color);
 }
 
 img {

@@ -15,6 +15,7 @@ span span img {
 p {
     font-size: 0.7em;
     font-weight: bold;
+    color: var(--primary-text-color);
     text-transform: uppercase;
     margin-top: 7px;
     width: 100%;
@@ -24,6 +25,7 @@ p {
 
 h4 {
     font-size: 1.7em;
+    color: var(--primary-text-color);
     margin-left: 15px;
 }
 

@@ -64,6 +64,8 @@ public class SocketClient implements ISocketProvider {
                     iop.reset(tags);
                     break;
                 default:
+                    System.out.println("Batch production running...");
+
                     JSONObject request = (JSONObject) args[0];
                     try {
                         iop.start(tags, Float.parseFloat(request.getString("batchId")),
@@ -83,7 +85,7 @@ public class SocketClient implements ISocketProvider {
     }
 
     @Override
-    public void sendDataSet(String dataset) {
+    public void sendDataSet(Object dataset) {
         socket.emit("data", dataset);
     }
 }

@@ -8,6 +8,7 @@ import java.util.ServiceLoader;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.BiConsumer;
+import com.google.gson.Gson;
 import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaMonitoredItem;
 import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaSubscription;
 import org.eclipse.milo.opcua.stack.core.AttributeId;
@@ -28,6 +29,7 @@ public class SubscribeImpl implements Runnable {
     private static Thread thread;
     private static Map<String, Object> dataSet = new HashMap<String, Object>();
     private static AtomicLong clientHandles = new AtomicLong(1L);
+    private static Gson gson = new Gson(); 
 
     private static ServiceLoader<ISocketProvider> service = ServiceLoader.load(ISocketProvider.class);
     private static ISocketProvider isp = service.iterator().next();
@@ -59,14 +61,13 @@ public class SubscribeImpl implements Runnable {
                     Arrays.asList(createMonitoredItem(tags.adminTags.get("ProdProcessedCount")),
                             createMonitoredItem(tags.statusTags.get("BatchId")),
                             createMonitoredItem(tags.statusTags.get("Products")),
-                            createMonitoredItem(tags.statusTags.get("MachSpeed")),
-                            createMonitoredItem(tags.statusTags.get("State")),
+                            createMonitoredItem(tags.statusTags.get("MachSpeed")), 
+                            createMonitoredItem(tags.statusTags.get("State")), 
                             createMonitoredItem(tags.adminTags.get("ProdDefectiveCount")),
                             createMonitoredItem(tags.statusTags.get("Humidity")),
                             createMonitoredItem(tags.statusTags.get("Temperature")),
                             createMonitoredItem(tags.statusTags.get("Vibration")),
-                            createMonitoredItem(tags.statusTags.get("Speed")),
-                            createMonitoredItem(tags.statusTags.get("CurSpeed"))),
+                            createMonitoredItem(tags.statusTags.get("CurSpeed"))), 
                     onItemCreated).get();
 
             Thread.sleep(TimeUnit.HOURS.toMillis(1));
@@ -87,10 +88,11 @@ public class SubscribeImpl implements Runnable {
 
         // Add value to map if not null
         if (value.getValue().getValue() != null) {
-            dataSet.put(tags.nodeMap.get(item.getReadValueId().getNodeId().getIdentifier().toString()),
-                    value.getValue().getValue());
+            dataSet.put(
+                tags.nodeMap.get(item.getReadValueId().getNodeId().getIdentifier().toString()),
+                value.getValue().getValue());
 
-            isp.sendDataSet(dataSet.toString());
+            isp.sendDataSet(dataSet);
         }
     }
 }
