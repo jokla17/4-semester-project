@@ -1,5 +1,5 @@
 package common.services;
 
 public interface ISocketProvider {
-    public void sendDataSet(Object dataset);
+    public void sendDataSet(String cmd, Object dataset);
 }

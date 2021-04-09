@@ -29,7 +29,7 @@ public class SubscribeImpl implements Runnable {
     private static Thread thread;
     private static Map<String, Object> dataSet = new HashMap<String, Object>();
     private static AtomicLong clientHandles = new AtomicLong(1L);
-    private static Gson gson = new Gson(); 
+    private static Gson gson = new Gson();
 
     private static ServiceLoader<ISocketProvider> service = ServiceLoader.load(ISocketProvider.class);
     private static ISocketProvider isp = service.iterator().next();
@@ -47,27 +47,30 @@ public class SubscribeImpl implements Runnable {
         MonitoringParameters parameters = new MonitoringParameters(clientHandle, 200.0, null, Unsigned.uint(10), true);
         NodeId nodeId = new NodeId(6, identifier);
         ReadValueId readValueId = new ReadValueId(nodeId, AttributeId.Value.uid(), null, null);
-        MonitoredItemCreateRequest micr = new MonitoredItemCreateRequest(readValueId, MonitoringMode.Reporting, parameters);
+        MonitoredItemCreateRequest micr = new MonitoredItemCreateRequest(readValueId, MonitoringMode.Reporting,
+                parameters);
         return micr;
     }
 
     @Override
     public void run() {
         try {
-            BiConsumer<UaMonitoredItem, Integer> onItemCreated = (item, id) -> item.setValueConsumer(SubscribeImpl::onSubscriptionValue);
-            UaSubscription subscription = ServerConnection.getInstance().getSession().getSubscriptionManager().createSubscription(1000.0).get();
+            BiConsumer<UaMonitoredItem, Integer> onItemCreated = (item, id) -> item
+                    .setValueConsumer(SubscribeImpl::onSubscriptionValue);
+            UaSubscription subscription = ServerConnection.getInstance().getSession().getSubscriptionManager()
+                    .createSubscription(1000.0).get();
 
             List<UaMonitoredItem> items = subscription.createMonitoredItems(TimestampsToReturn.Both,
                     Arrays.asList(createMonitoredItem(tags.adminTags.get("ProdProcessedCount")),
                             createMonitoredItem(tags.statusTags.get("BatchId")),
                             createMonitoredItem(tags.statusTags.get("Products")),
-                            createMonitoredItem(tags.statusTags.get("MachSpeed")), 
-                            createMonitoredItem(tags.statusTags.get("State")), 
+                            createMonitoredItem(tags.statusTags.get("MachSpeed")),
+                            createMonitoredItem(tags.statusTags.get("State")),
                             createMonitoredItem(tags.adminTags.get("ProdDefectiveCount")),
                             createMonitoredItem(tags.statusTags.get("Humidity")),
                             createMonitoredItem(tags.statusTags.get("Temperature")),
                             createMonitoredItem(tags.statusTags.get("Vibration")),
-                            createMonitoredItem(tags.statusTags.get("CurSpeed"))), 
+                            createMonitoredItem(tags.statusTags.get("CurSpeed"))),
                     onItemCreated).get();
 
             Thread.sleep(TimeUnit.HOURS.toMillis(1));
@@ -78,21 +81,20 @@ public class SubscribeImpl implements Runnable {
     }
 
     private static void onSubscriptionValue(UaMonitoredItem item, DataValue value) {
-        // Checks the current state is equal to specific states, if so, thread is interrupted.
+        // Checks the current state is equal to specific states, if so, thread is
+        // interrupted.
         if (item.getReadValueId().getNodeId().getIdentifier().equals("::Program:Cube.Status.StateCurrent")
                 && value.getValue().getValue().toString().matches("2|5|9|11|17")) {
-
+            isp.sendDataSet("dbData",dataSet);
             thread.interrupt();
             return;
         }
 
         // Add value to map if not null
         if (value.getValue().getValue() != null) {
-            dataSet.put(
-                tags.nodeMap.get(item.getReadValueId().getNodeId().getIdentifier().toString()),
-                value.getValue().getValue());
-
-            isp.sendDataSet(dataSet);
+            dataSet.put(tags.nodeMap.get(item.getReadValueId().getNodeId().getIdentifier().toString()),
+                    value.getValue().getValue());
+            isp.sendDataSet("data",dataSet);
         }
     }
 }

@@ -85,7 +85,8 @@ public class SocketClient implements ISocketProvider {
     }
 
     @Override
-    public void sendDataSet(Object dataset) {
-        socket.emit("data", dataset);
+    public void sendDataSet(String cmd, Object dataset) {
+        socket.emit(cmd, dataset);
     }
+    
 }
