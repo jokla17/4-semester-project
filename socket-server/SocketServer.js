@@ -7,6 +7,8 @@ const io = require('socket.io')(http, {
     }
 });
 
+const dbmanager = require('./DatabaseManager');
+
 io.on('connection', (socket) => {
     console.log("A client has connected... [ID: " + socket.id + "]");
 
@@ -16,6 +18,12 @@ io.on('connection', (socket) => {
 
     socket.on('data', (msg) => {
         socket.broadcast.emit('data', msg);
+    });
+
+    socket.on('dbData', (msg) => {
+        socket.broadcast.emit('dbData', msg);
+        dbmanager.updateData(msg);
+        console.log(msg);
     });
 
     socket.on('disconnect', () => {
