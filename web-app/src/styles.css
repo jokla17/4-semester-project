@@ -15,7 +15,10 @@
     --meter-back-bg-color: #d0d6e0;
     --bell-alert-bg-color: #f59d19;
     --notification-alert-bg-color: #31ac60;
-    --notification-bg-color: #ffffff;
+    --notification-bg-color: #dfe4ea;
+    --notification-header-bg-color: #666766;
+    --notification-line-color: #666766;
+    --notification-hover-color: #f59d19;
     --container-bg-color: #ffffff;
     --search-bg-color: #d0d6e0;
     --switch-color: #666766;
@@ -56,6 +59,16 @@
 .centerRightFlex {
     justify-content: flex-end;
     align-items: center;
+}
+
+.rightFlex {
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.leftFlex {
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .rowFlex {

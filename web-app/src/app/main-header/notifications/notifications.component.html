@@ -1,4 +1,15 @@
-<span class="enableFlex centerFlex shadow">
-    <p id="alertReminder" class="shadow">1</p>   
+<span (click)="changeHidden()" id="button" class="enableFlex centerFlex shadow">
+    <p id="alertReminder" class="shadow">{{ numberOfNotifications }}</p>   
     <img src="{{ assetsService.bellIcon }}">
 </span>
+
+<div *ngIf="hidden" id="notificationDisplay" class="shadow">
+    <span id="triangle"></span>
+    <h3>Notifications</h3>
+    <div *ngFor="let notification of notifications" id="notificationDisplayInnerBox" class="enableFlex columnFlex rightFlex">
+        <p>new</p>
+        <p>Batch production (ID N/A) has been completed!</p>
+        <p>{{ time }}</p>
+        <span id="line"></span>
+    </div>
+</div>

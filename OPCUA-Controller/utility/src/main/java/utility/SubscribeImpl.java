@@ -8,7 +8,6 @@ import java.util.ServiceLoader;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.BiConsumer;
-import com.google.gson.Gson;
 import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaMonitoredItem;
 import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaSubscription;
 import org.eclipse.milo.opcua.stack.core.AttributeId;
@@ -29,7 +28,6 @@ public class SubscribeImpl implements Runnable {
     private static Thread thread;
     private static Map<String, Object> dataSet = new HashMap<String, Object>();
     private static AtomicLong clientHandles = new AtomicLong(1L);
-    private static Gson gson = new Gson();
 
     private static ServiceLoader<ISocketProvider> service = ServiceLoader.load(ISocketProvider.class);
     private static ISocketProvider isp = service.iterator().next();

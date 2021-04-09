@@ -11,12 +11,14 @@ export class SwitchColorComponent {
     private lightThemeColors: Map<String, String>;
     private switched : boolean = false;
 
+    
     constructor(
         private assetsService : AssetsService
     ){
         this.lightThemeColors = new Map<String, String>([
             ["--body-bg-color", "#f4f6fa"],
             ["--primary-text-color", "#000000"],
+            ["--secondary-text-color", "#ffffff"],
             ["--third-text-color", "#666766"],
             ["--header-bg-color", "#dfe4ea"],
             ["--navigation-bg-color", "#d1d6e0"],
@@ -30,7 +32,10 @@ export class SwitchColorComponent {
             ["--meter-back-bg-color", "#d0d6e0"],
             ["--bell-alert-bg-color", "#f59d19"],
             ["--notification-alert-bg-color", "#31ac60"],
-            ["--notification-bg-color", "#ffffff"],
+            ["--notification-bg-color", "#dfe4ea"],
+            ["--notification-header-bg-color", "#666766"],
+            ["--notification-line-color", "#666766"],
+            ["--notification-hover-color", "#f59d19"],
             ["--container-bg-color", "#ffffff"],
             ["--search-bg-color", "#d0d6e0"],
             ["--switch-color", "#666766"],
@@ -42,6 +47,7 @@ export class SwitchColorComponent {
         this.darkThemeColors = new Map<String, String>([
             ["--body-bg-color", "#2c3e50"],
             ["--primary-text-color", "#ffffff"],
+            ["--secondary-text-color", "#ffffff"],
             ["--third-text-color", "#ffffff"],
             ["--header-bg-color", "#3d5369"],
             ["--navigation-bg-color", "#34495e"],
@@ -55,7 +61,10 @@ export class SwitchColorComponent {
             ["--meter-back-bg-color", "#2c3e50"],
             ["--bell-alert-bg-color", "#f59d19"],
             ["--notification-alert-bg-color", "#31ac60"],
-            ["--notification-bg-color", "#d2c3e50"],
+            ["--notification-bg-color", "#3d5369"],
+            ["--notification-header-bg-color", "#2c3e50"],
+            ["--notification-line-color", "#666766"],
+            ["--notification-hover-color", "#f59d19"],
             ["--container-bg-color", "#354a5e"],
             ["--search-bg-color", "#2c3e50"],
             ["--switch-color", "#ffffff"],

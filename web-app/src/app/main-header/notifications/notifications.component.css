@@ -1,4 +1,4 @@
-span {
+#button {
     background-color: var(--container-bg-color);
     width: 27px;
     height: 25px;
@@ -7,7 +7,7 @@ span {
     border-radius: 12px;
 }
 
-span:hover {
+#button:hover {
     background-color: var(--bell-alert-bg-color);
     cursor: pointer;  
 }
@@ -27,4 +27,77 @@ span:hover {
 img {
     position: absolute;
     width: 19px;
+}
+
+/** Notification display **/
+#notificationDisplay {
+    position: absolute;
+    margin: 15px 0 0 -200px;
+    background-color: var(--notification-bg-color);
+    border-radius: 12px;
+    z-index: 10;
+}
+
+#notificationDisplay h3{
+    font-size: 0.9em;
+    text-transform: uppercase;
+    padding: 6px 20px 6px 15px;
+    border-radius: 12px 12px 0 0;
+    background-color: var(--notification-header-bg-color);
+    color: var( --secondary-text-color)
+}
+
+
+#notificationDisplayInnerBox {
+    padding: 14px 20px 14px 15px;
+}
+
+#notificationDisplayInnerBox #line {
+    display: inline-block;
+    background-color: var(--notification-line-color);
+    width: 100%;
+    height: 2px;
+}
+
+#notificationDisplayInnerBox p {
+    font-size: 0.8em;
+    margin-bottom: 6px;
+    color: var(--primary-text-color);
+}
+
+#notificationDisplayInnerBox:hover {
+    background-color: var(--notification-hover-color);
+    cursor: pointer;
+}
+
+#notificationDisplayInnerBox:last-of-type:hover {
+    border-radius: 0 0 12px 12px;
+}
+
+#notificationDisplayInnerBox p:first-of-type {
+    color: var( --secondary-text-color);
+    background-color: var(--notification-alert-bg-color);
+    font-size: 0.7em;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 2px 7px 2px 7px;
+    border-radius: 12px;
+}
+
+#notificationDisplayInnerBox p:nth-of-type(2) {
+    font-weight: bold;
+}
+
+#notificationDisplayInnerBox p:nth-of-type(3) {
+    font-style: italic;
+}
+
+#triangle {
+    position: absolute;
+    width: 0; 
+    height: 0; 
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-bottom: 12px solid var(--notification-header-bg-color);
+    margin: -11px 0 0 230px;
 }
