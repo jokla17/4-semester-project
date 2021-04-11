@@ -7,6 +7,7 @@ const io = require('socket.io')(http, {
     }
 });
 
+const { response } = require('express');
 const dbmanager = require('./DatabaseManager');
 
 io.on('connection', (socket) => {
@@ -23,8 +24,12 @@ io.on('connection', (socket) => {
     socket.on('dbData', (msg) => {
         socket.broadcast.emit('dbData', msg);
         dbmanager.updateData(msg);
-        console.log(msg);
     });
+
+    socket.on('receive',() => {
+        dbmanager.selectAllData((callback) => io.emit('receive', callback));
+    });
+
 
     socket.on('disconnect', () => {
         console.log("A client has disconnected... [ID: " + socket.id + "]");

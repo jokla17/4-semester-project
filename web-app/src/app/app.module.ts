@@ -22,6 +22,7 @@ import { MaintenanceComponent } from './main-dashboard/maintenance/maintenance.c
 import { MainBatchReports } from './main-batch-reports/main-batch-reports.component';
 import { MainStatisticalAnalysis } from './main-statistical-analysis/main-statistical-analysis.component';
 import { AssetsService } from './assets.service';
+import { BatchReportsTable } from './main-batch-reports/batch-reports-table/batch-reports-table.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { AssetsService } from './assets.service';
     MaintenanceComponent,
 
     MainBatchReports, // Batch reports page components
+    BatchReportsTable,
 
     MainStatisticalAnalysis, // Statistical analysis page components
   ],
