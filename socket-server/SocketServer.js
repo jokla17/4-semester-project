@@ -30,7 +30,6 @@ io.on('connection', (socket) => {
         dbmanager.selectAllData((callback) => io.emit('receive', callback));
     });
 
-
     socket.on('disconnect', () => {
         console.log("A client has disconnected... [ID: " + socket.id + "]");
     });

@@ -14,16 +14,16 @@ export class OperationsComponent {
     public sendMessage(request: String): void {
         switch (request) {
             case 'stop':
-                this.socketIOService.sendRequest('stop');
+                this.socketIOService.emitToOPCUA('stop');
                 break;
             case 'abort':
-                this.socketIOService.sendRequest('abort');
+                this.socketIOService.emitToOPCUA('abort');
                 break;
             case 'reset':
-                this.socketIOService.sendRequest('reset');
+                this.socketIOService.emitToOPCUA('reset');
                 break;
             case 'clear':
-                this.socketIOService.sendRequest('clear');
+                this.socketIOService.emitToOPCUA('clear');
                 break;
         }        
     }

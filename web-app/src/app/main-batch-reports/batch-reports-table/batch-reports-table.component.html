@@ -1,8 +1,15 @@
-<table>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <button (click)="clickTest()">in</button>
-</table>
+<div class = "container">
+    <h1>BatchReports</h1>
+    <table>
+        <tr>
+            <th>batchId</th>
+            <th>Type</th>
+        </tr>
+        <tr *ngFor="let batch of batchReports | keyvalue">
+            <td>{{batch.key}}</td>
+            <td>{{batch.value.Type}}</td>
+            <td>{{batch.value.ProdProcessedCount}}</td>
+            <td>{{batch.value.State}}</td>
+        </tr>
+    </table>
+</div>

@@ -7,17 +7,15 @@ import { SocketIOService } from 'src/app/socketio.service';
     styleUrls : ["./batch-reports-table.component.css"]
 })
 export class BatchReportsTable {
-    public test : any[];
+    public batchReports : Map<number, String>; 
 
     constructor(
         private socketIOService : SocketIOService
     ){
-        this.test.push(this.socketIOService.getDatabaseData());
-        console.log(this.test);
-    }
-    
-    public clickTest () : void {
-        //this.socketIOService.getDatabaseData();
-        console.log(this.socketIOService.getDatabaseData());
+        this.socketIOService.emitToDatabase();
+
+        this.socketIOService.listenToDatabase().subscribe((data : any) => {
+            this.batchReports = data;
+        })
     }
 }

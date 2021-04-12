@@ -14,6 +14,6 @@ export class VisualizationComponent {
         private socketIOService : SocketIOService,
         public assetsService : AssetsService
     ){
-        this.messages = this.socketIOService.getMessages();
+      //  this.messages = this.socketIOService.getMessages();
     }
 }

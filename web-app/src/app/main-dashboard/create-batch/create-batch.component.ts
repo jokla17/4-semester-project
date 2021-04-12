@@ -25,7 +25,7 @@ export class CreateBatchComponent {
     public sendMessage(request: String): void {
         switch (request) {
             case "start":
-                this.socketIOService.sendRequest(this.messageForm.value);
+                this.socketIOService.emitToOPCUA(this.messageForm.value);
                 break;
         }        
     }
