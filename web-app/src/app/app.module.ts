@@ -22,6 +22,8 @@ import { MaintenanceComponent } from './main-dashboard/maintenance/maintenance.c
 import { MainBatchReports } from './main-batch-reports/main-batch-reports.component';
 import { MainStatisticalAnalysis } from './main-statistical-analysis/main-statistical-analysis.component';
 import { AssetsService } from './assets.service';
+import { BatchReportsTable } from './main-batch-reports/batch-reports-table/batch-reports-table.component';
+import { MainSingleBatchReport } from './main-single-batch-report/main-single-batch-report.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,9 @@ import { AssetsService } from './assets.service';
     MaintenanceComponent,
 
     MainBatchReports, // Batch reports page components
+    BatchReportsTable,
+  
+    MainSingleBatchReport, // Single Batch Report
 
     MainStatisticalAnalysis, // Statistical analysis page components
   ],
@@ -53,7 +58,8 @@ import { AssetsService } from './assets.service';
       { path: '', component: MainDashboardComponent },
       { path: 'dashboard', component: MainDashboardComponent },
       { path: 'batch-reports', component: MainBatchReports },
-      { path: 'statistical-analysis', component: MainBatchReports }
+      { path: 'statistical-analysis', component: MainStatisticalAnalysis },
+      { path: 'batch-report/:batchId', component: MainSingleBatchReport }
     ]),
   ],
   providers: [ SocketIOService, AssetsService ],

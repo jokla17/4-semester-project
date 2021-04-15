@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { SocketIOService } from "src/app/socketio.service";
 import { AssetsService } from "../../assets.service";
 
 @Component({
@@ -10,23 +11,26 @@ export class NotificationsComponent {
     public notifications : String[];
     public numberOfNotifications : number;
     public hidden : boolean;
-    public date;
     public time : String;
 
     constructor(
-        public assetsService : AssetsService
+        public assetsService : AssetsService,
+        public socketIOService : SocketIOService
     ) {
-        this.notifications = ["", "", ""]
+        this.notifications = [];
         this.numberOfNotifications = this.notifications.length;
         this.hidden = false;
-        this.date = new Date();
-        this.time = this.date.getHours() + ":" 
-        + this.date.getMinutes() + ":" + this.date.getSeconds();
+
+        this.socketIOService.listen("dbData").subscribe((data) => {
+            this.notifications.push(data);
+            this.numberOfNotifications = this.notifications.length;
+        })
     }
 
     public changeHidden() : void {
         if (this.hidden == true) {
             this.hidden = false;
+            this.notifications = [];
         } else if (this.hidden == false && this.notifications.length != 0) {
             this.hidden = true;
             this.numberOfNotifications = 0;

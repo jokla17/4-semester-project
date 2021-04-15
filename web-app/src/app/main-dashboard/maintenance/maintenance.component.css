@@ -1,13 +1,26 @@
-span {
-    background-color: var(--secondary-meter-bg-color);
+#maintenanceMeterBg {
+    background-color: var(--meter-back-bg-color);
     width: 100%;
     border-radius: 12px;
-    padding: 10px 0 10px 0;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
 }
 
-span h3 {
+#maintenanceMeterBg h3 {
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 1em;
     color: var(--secondary-text-color);
+    position: absolute;
+    width: inherit;
+    text-align: center;
+    z-index: 2;
+}
+
+#maintenanceMeter {
+    background-color: var(--secondary-meter-bg-color);
+    width: 100%;
+    height: 100%;
+    padding: 20px 0 20px 0;
 }

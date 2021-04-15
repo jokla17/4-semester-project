@@ -20,12 +20,20 @@ public class Tags {
         put("::Program:Cube.Status.Parameter[3].Value",         "Temperature");
         put("::Program:Cube.Status.Parameter[4].Value",         "Vibration");
 
-        put( "::Program:Cube.Command.Parameter[0].Value", "SetBatchId");
-        put( "::Program:Cube.Command.Parameter[1].Value", "SetType");
-        put( "::Program:Cube.Command.Parameter[2].Value", "SetAmount");
-        put( "::Program:Cube.Command.CntrlCmd",           "SetCntrlCmd");
-        put( "::Program:Cube.Command.CmdChangeRequest",   "SetCmdChangeRequest");
-        put( "::Program:Cube.Command.MachSpeed",          "SetMachSpeed");
+        put("::Program:Cube.Command.Parameter[0].Value", "SetBatchId");
+        put("::Program:Cube.Command.Parameter[1].Value", "SetType");
+        put("::Program:Cube.Command.Parameter[2].Value", "SetAmount");
+        put("::Program:Cube.Command.CntrlCmd",           "SetCntrlCmd");
+        put("::Program:Cube.Command.CmdChangeRequest",   "SetCmdChangeRequest");
+        put("::Program:Cube.Command.MachSpeed",          "SetMachSpeed");
+
+        put("::Program:Maintenance.Counter",          "Maintenance");
+
+        put("::Program:Inventory.Barley", "Barley");
+        put("::Program:Inventory.Hops", "Hops");
+        put("::Program:Inventory.Malt", "Malt");
+        put("::Program:Inventory.Wheat", "Wheat");
+        put("::Program:Inventory.Yeast", "Yeast");
     }};
 
     public Map<String, String> adminTags = new HashMap<String, String>() {{

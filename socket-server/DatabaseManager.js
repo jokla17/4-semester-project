@@ -43,3 +43,29 @@ exports.updateData = (jsonObject) => {
       });
   }); 
 }
+
+// Select all
+exports.selectAllData = (callback) => {
+  MongoClient.connect(url, {useUnifiedTopology: true},function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("ajatekdb");
+    dbo.collection("batch_reports").find({}).toArray(function(err, result) {
+      if (err) throw err;
+      db.close();
+      return callback(result);
+    });
+  });
+}
+
+// Select one
+exports.selectSpecificData = (search, callback) => {
+  MongoClient.connect(url, {useUnifiedTopology: true}, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("ajatekdb");
+    dbo.collection("batch_reports").findOne({BatchId : search}, function(err, result) {
+      if (err) throw err;
+      db.close();
+      return callback(result);
+    });
+  });  
+}

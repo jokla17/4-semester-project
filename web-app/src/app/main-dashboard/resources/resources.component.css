@@ -2,11 +2,14 @@
     margin-left: 20px;
 }
 
-span {
-    background-color: var(--primary-meter-bg-color);
+.resourceBg {
+    background-color: var(--meter-back-bg-color);
     width: 100%;
     border-radius: 12px;
     padding: 10px 0 10px 0;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
 }
 
 span h3 {
@@ -14,4 +17,15 @@ span h3 {
     font-weight: bold;
     font-size: 1em;
     color: var(--secondary-text-color);
+    position: absolute;
+    width: inherit;
+    text-align: center;
+    z-index: 2;
+}
+
+#resourceBarley, #resourceYeast, #resourceHops, #resourceMalt, #resourceWheat {
+    background-color: var(--primary-meter-bg-color);
+    width: 100%;
+    height: 100%;
+    padding: 10px 0 10px 0;
 }

@@ -1,5 +1,7 @@
 package utility;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -23,21 +25,25 @@ import org.eclipse.milo.opcua.stack.core.types.structured.ReadValueId;
 import common.data.Tags;
 import common.services.ISocketProvider;
 
-public class SubscribeImpl implements Runnable {
+public class SubscribeImpl extends Thread {
     private static Tags tags = new Tags();
-    private static Thread thread;
-    private static Map<String, Object> dataSet = new HashMap<String, Object>();
     private static AtomicLong clientHandles = new AtomicLong(1L);
-
+    private static Map<String, Object> dataSet = new HashMap<String, Object>();
     private static ServiceLoader<ISocketProvider> service = ServiceLoader.load(ISocketProvider.class);
     private static ISocketProvider isp = service.iterator().next();
 
-    public SubscribeImpl() {
-        thread = new Thread(this);
+    private static SubscribeImpl instance; 
+    public static SubscribeImpl getInstance(){
+        if(instance == null){
+            instance = new SubscribeImpl();
+        }
+        return instance;
     }
 
     public void subscribe() {
-        thread.start();
+        if (!this.isAlive()) {
+            this.start();
+        }
     }
 
     public MonitoredItemCreateRequest createMonitoredItem(String identifier) {
@@ -45,19 +51,17 @@ public class SubscribeImpl implements Runnable {
         MonitoringParameters parameters = new MonitoringParameters(clientHandle, 200.0, null, Unsigned.uint(10), true);
         NodeId nodeId = new NodeId(6, identifier);
         ReadValueId readValueId = new ReadValueId(nodeId, AttributeId.Value.uid(), null, null);
-        MonitoredItemCreateRequest micr = new MonitoredItemCreateRequest(readValueId, MonitoringMode.Reporting,
-                parameters);
+        MonitoredItemCreateRequest micr = new MonitoredItemCreateRequest(readValueId, MonitoringMode.Reporting, parameters);
         return micr;
     }
 
     @Override
     public void run() {
         try {
-            BiConsumer<UaMonitoredItem, Integer> onItemCreated = (item, id) -> item
-                    .setValueConsumer(SubscribeImpl::onSubscriptionValue);
-            UaSubscription subscription = ServerConnection.getInstance().getSession().getSubscriptionManager()
-                    .createSubscription(1000.0).get();
+            BiConsumer<UaMonitoredItem, Integer> onItemCreated = (item, id) -> item.setValueConsumer(SubscribeImpl::onSubscriptionValue);
+            UaSubscription subscription = ServerConnection.getInstance().getSession().getSubscriptionManager().createSubscription(1000.0).get();
 
+            dataSet.put("Type", typeConverter(new ReadImpl(tags.commandTags.get("Type")).read()));
             List<UaMonitoredItem> items = subscription.createMonitoredItems(TimestampsToReturn.Both,
                     Arrays.asList(createMonitoredItem(tags.adminTags.get("ProdProcessedCount")),
                             createMonitoredItem(tags.statusTags.get("BatchId")),
@@ -68,31 +72,60 @@ public class SubscribeImpl implements Runnable {
                             createMonitoredItem(tags.statusTags.get("Humidity")),
                             createMonitoredItem(tags.statusTags.get("Temperature")),
                             createMonitoredItem(tags.statusTags.get("Vibration")),
-                            createMonitoredItem(tags.statusTags.get("CurSpeed"))),
+                            createMonitoredItem(tags.statusTags.get("CurSpeed")),
+                            createMonitoredItem(tags.maintenanceTag),
+                            createMonitoredItem(tags.inventoryTags.get("Barley")),
+                            createMonitoredItem(tags.inventoryTags.get("Hops")),
+                            createMonitoredItem(tags.inventoryTags.get("Malt")),
+                            createMonitoredItem(tags.inventoryTags.get("Wheat")),
+                            createMonitoredItem(tags.inventoryTags.get("Yeast"))),
                     onItemCreated).get();
 
             Thread.sleep(TimeUnit.HOURS.toMillis(1));
             subscription.deleteMonitoredItems(items);
-        } catch (Exception e) {
-            System.out.println("Batch production done... awaiting next!");
-        }
+        } catch (Exception e) {}
     }
 
     private static void onSubscriptionValue(UaMonitoredItem item, DataValue value) {
-        // Checks the current state is equal to specific states, if so, thread is
-        // interrupted.
         if (item.getReadValueId().getNodeId().getIdentifier().equals("::Program:Cube.Status.StateCurrent")
                 && value.getValue().getValue().toString().matches("2|5|9|11|17")) {
-            isp.sendDataSet("dbData",dataSet);
-            thread.interrupt();
-            return;
+
+            dataSet.put("DateTime", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")));
+            isp.sendDataSet("dbData", dataSet);
+
+            System.out.println("Batch production done... awaiting next!");
         }
 
-        // Add value to map if not null
         if (value.getValue().getValue() != null) {
-            dataSet.put(tags.nodeMap.get(item.getReadValueId().getNodeId().getIdentifier().toString()),
-                    value.getValue().getValue());
-            isp.sendDataSet("data",dataSet);
+            dataSet.put(tags.nodeMap.get(item.getReadValueId().getNodeId().getIdentifier().toString()), value.getValue().getValue());
+            isp.sendDataSet("data", dataSet);
         }
+    }
+
+    private String typeConverter(float type) {
+        String t = null;
+
+        switch ((int) type) {
+            case 0:
+                t = "Pilsner";
+                break;
+            case 1:
+                t = "Wheat";
+                break;
+            case 2:
+                t = "IPA";
+                break;
+            case 3:
+                t = "Stout";
+                break;
+            case 4:
+                t = "Ale";
+                break;
+            case 5:
+                t = "Alcohol Free";
+                break;
+        }
+
+        return t;
     }
 }

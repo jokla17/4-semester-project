@@ -1,29 +1,24 @@
 import { io } from 'socket.io-client'; 
+import { Observable } from 'rxjs';
 
 export class SocketIOService {
     private url = 'http://localhost:5000';
     private socket;
-    private messages : String[];
 
     constructor() {
         this.socket = io(this.url);
-        this.messages = [""];
-
-        this.socket.on('data', (data) => {
-            this.messages.push(data);
-        })
     }
 
-    public sendRequest(request: String) {
-        this.socket.emit('execute', request);
-
-        if (request == "start") {
-            this.messages = [""];
-            this.messages.push("");
-        }
+    public emit(event : String, request : any) : void {
+        this.socket.emit(event, request); 
     }
 
-    public getMessages() : String[] {
-        return this.messages;
+    public listen(event : String) : any {
+        return new Observable((subscriber) => {
+            this.socket.on(event, (data) => {
+                subscriber.next(data);
+            })
+        });
     }
 }
+
