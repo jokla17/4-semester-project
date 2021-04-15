@@ -1,40 +1,39 @@
 table {
     width: 100%;
+    border-radius: 12px;
     border-collapse: collapse;
 }
 
-table tr:first-of-type {
-    text-transform: uppercase;
-}
-
-table th {
+h1{
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: var(--primary-text-color);
     text-align: left;
 }
 
-table tr, th, td {
-    font-size: 1em;
-    color: var(--third-text-color);
+td{
+    text-align: left;
+    padding: 30px 0px 30px 10px;
+    color: var(--primary-text-color);
 }
 
-tr:first-of-type {
-    border-bottom: 2px solid var(--third-text-color);
+th{
+    text-align: left;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    color: var(--primary-text-color);
 }
-
-table th {
-    font-size: 0.85em;
-    padding-bottom: 15px;
-}
-
-table td {
-    padding: 20px 10px 20px 10px;
-}
-
-table tr:not(:first-of-type):hover > td{
-    background-color: var(--batch-row-hover-color);
+ 
+tr:not(:first-of-type):hover{
+    background-color: var(--input-border-color);
     cursor: pointer;
-    color: var(--third-text-color);
+}
+
+tr:first-of-type{
+    border-bottom: 2px solid var(--primary-text-color);
 }
 
 button {
     margin-top: 20px;
 }
+
