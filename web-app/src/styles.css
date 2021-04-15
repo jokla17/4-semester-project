@@ -18,13 +18,16 @@
     --notification-bg-color: #dfe4ea;
     --notification-header-bg-color: #666766;
     --notification-line-color: #666766;
-    --notification-hover-color: #f59d19;
+    --notification-hover-color: #f4f6fa;
     --container-bg-color: #ffffff;
     --search-bg-color: #d0d6e0;
+    --search-border-color: #666766;
+    --search-hover-color: #f59d19;
     --switch-color: #666766;
     --switch-bg-color: #ffffff;
     --input-border-color: #bababa;
     --input-border-bg-color: #ffffff;
+    --batch-row-hover-color: #f4f6fa;
     --footer-bg-color: rgba(255, 255, 255, 0.75);
 }
 

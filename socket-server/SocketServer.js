@@ -17,13 +17,20 @@ io.on('connection', (socket) => {
     });
 
     socket.on('data', (msg) => {
-        socket.broadcast.emit('data', msg);
+        io.emit('data', msg);
     });
 
     socket.on('dbData', (msg) => {
         socket.broadcast.emit('dbData', msg);
         dbmanager.updateData(msg);
-        console.log(msg);
+    });
+
+    socket.on('selectAllData', () => {
+        dbmanager.selectAllData((callback) => io.emit('selectAllData', callback));
+    });
+
+    socket.on('selectSpecificData', (data) => {
+        dbmanager.selectSpecificData(data, (callback) => io.emit('selectSpecificData', callback));
     });
 
     socket.on('disconnect', () => {

@@ -1,4 +1,9 @@
 <span class="enableFlex rowFlex centerLeftFlex">
-    <input type="text" placeholder="Search by batch id or date...">
+    <form [formGroup]="searchForm">
+        <input formControlName="searchValue" (keyup)="search()" type="text" placeholder="Search by batch id...">
+    </form>
     <img src="{{ assetsService.searchIcon }}">
+    <span id="batch" (click)="hide()" [routerLink]="['/batch-report', searchBatch.BatchId]">
+        <p>Batch {{ searchBatch.BatchId }}</p>
+    </span>
 </span>

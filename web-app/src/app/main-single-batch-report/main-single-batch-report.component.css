@@ -1,0 +1,40 @@
+.container {
+    min-height: 600px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: var(--primary-text-color);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table tr:first-of-type {
+    text-transform: uppercase;
+}
+
+table th {
+    text-align: left;
+}
+
+table tr, th, td {
+    font-size: 1em;
+    color: var(--third-text-color);
+}
+
+tr:first-of-type {
+    border-bottom: 2px solid var(--third-text-color);
+}
+
+table th {
+    font-size: 0.85em;
+    padding-bottom: 15px;
+}
+
+table td {
+    padding: 20px 0px 20px 0px;
+}

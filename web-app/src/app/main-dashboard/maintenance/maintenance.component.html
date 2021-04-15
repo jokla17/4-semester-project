@@ -1,7 +1,8 @@
 <div class="container enableFlex centerFlex columnFlex shadow">
     <h3>Maintenance</h3>
 
-    <span class="enableFlex centerFlex shadow">
-        <h3>Efficiency 100%</h3>
+    <span id="maintenanceMeterBg" class="enableFlex centerLeftFlex shadow">
+        <h3>Efficiency {{ getMaintenance() || 100 }}%</h3>
+        <span id="maintenanceMeter"></span>
     </span>
 </div>

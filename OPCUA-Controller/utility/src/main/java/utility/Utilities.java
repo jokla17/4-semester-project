@@ -15,6 +15,6 @@ public class Utilities implements IDataProvider{
 
     @Override
     public void subscribeToEndpoint() {
-        new SubscribeImpl().subscribe();
+        SubscribeImpl.getInstance().subscribe();
     }
 }

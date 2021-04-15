@@ -8,12 +8,18 @@ import { SocketIOService } from '../../socketio.service';
     styleUrls: ['./visualization.component.css']
 })
 export class VisualizationComponent {
-    public messages : String[];
+    public realtimeData: any[];
 
     constructor(
         private socketIOService : SocketIOService,
         public assetsService : AssetsService
     ){
-        this.messages = this.socketIOService.getMessages();
+        this.realtimeData = [""];
+    }
+
+    public ngOnInit() : void {
+        this.socketIOService.listen("data").subscribe((data) => {
+            this.realtimeData.push(data);
+        })
     }
 }

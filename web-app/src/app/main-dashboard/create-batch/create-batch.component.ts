@@ -21,11 +21,10 @@ export class CreateBatchComponent {
         private formBuilder: FormBuilder
         ) {}
     
-
     public sendMessage(request: String): void {
         switch (request) {
             case "start":
-                this.socketIOService.sendRequest(this.messageForm.value);
+                this.socketIOService.emit('execute', this.messageForm.value);
                 break;
         }        
     }

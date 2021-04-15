@@ -35,13 +35,15 @@ export class SwitchColorComponent {
             ["--notification-bg-color", "#dfe4ea"],
             ["--notification-header-bg-color", "#666766"],
             ["--notification-line-color", "#666766"],
-            ["--notification-hover-color", "#f59d19"],
+            ["--notification-hover-color", "#f4f6fa"],
             ["--container-bg-color", "#ffffff"],
             ["--search-bg-color", "#d0d6e0"],
+            ["--search-border-color", "#666766"],
             ["--switch-color", "#666766"],
             ["--switch-bg-color", "#ffffff"],
             ["--input-border-color", "#bababa"],
             ["--input-border-bg-color", "#ffffff"],
+            ["--batch-row-hover-color", "#f4f6fa"],
             ["--footer-bg-color", "rgba(255, 255, 255, 0.75)"]
         ]);
         this.darkThemeColors = new Map<String, String>([
@@ -64,13 +66,15 @@ export class SwitchColorComponent {
             ["--notification-bg-color", "#3d5369"],
             ["--notification-header-bg-color", "#2c3e50"],
             ["--notification-line-color", "#666766"],
-            ["--notification-hover-color", "#f59d19"],
+            ["--notification-hover-color", "#34495e"],
             ["--container-bg-color", "#354a5e"],
             ["--search-bg-color", "#2c3e50"],
+            ["--search-border-color", "#354a5e"],
             ["--switch-color", "#ffffff"],
             ["--switch-bg-color", "#2c3e50"],
             ["--input-border-color", "#2b3d4f"],
             ["--input-border-bg-color", "#354a5e"],
+            ["--batch-row-hover-color", "#2c3e50"],
             ["--footer-bg-color", "rgba(0, 0, 0, 0.75)"]
         ]);
     }
