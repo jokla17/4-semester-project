@@ -1,9 +1,11 @@
 <div class = "container">
-    <h1>BatchReports</h1>
+    <h1>Batch reports</h1>
     <table>
         <tr>
-            <th>batchId</th>
-            <th>Type</th>
+            <th>Batch Id</th>
+            <th>Beer type</th>
+            <th>Amount Produced</th>
+            <th>State</th>
         </tr>
         <tr *ngFor="let batch of batchReports | keyvalue">
             <td>{{batch.key}}</td>
