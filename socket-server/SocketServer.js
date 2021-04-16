@@ -6,7 +6,6 @@ const io = require('socket.io')(http, {
         methods: ["GET", "POST", "PUT"]
     }
 });
-
 const dbmanager = require('./DatabaseManager');
 
 io.on('connection', (socket) => {
