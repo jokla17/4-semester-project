@@ -11,3 +11,13 @@ input[type="number"] {
 input[type="number"]::placeholder {
     color: var(--third-text-color);
 }
+
+select {
+    border: 2px solid var(--input-border-color);
+    background-color: var(--input-border-bg-color);
+    color: var(--third-text-color);
+    padding: 10px;
+    border-radius: 12px; 
+    margin: 0 5px 0 5px;
+    font-size: 0.8em;
+}

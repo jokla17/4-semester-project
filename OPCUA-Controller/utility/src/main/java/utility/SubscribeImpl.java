@@ -62,6 +62,8 @@ public class SubscribeImpl extends Thread {
             UaSubscription subscription = ServerConnection.getInstance().getSession().getSubscriptionManager().createSubscription(1000.0).get();
 
             dataSet.put("Type", typeConverter(new ReadImpl(tags.commandTags.get("Type")).read()));
+            System.out.println(dataSet);
+            
             List<UaMonitoredItem> items = subscription.createMonitoredItems(TimestampsToReturn.Both,
                     Arrays.asList(createMonitoredItem(tags.adminTags.get("ProdProcessedCount")),
                             createMonitoredItem(tags.statusTags.get("BatchId")),

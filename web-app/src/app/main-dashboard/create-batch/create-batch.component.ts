@@ -9,11 +9,12 @@ import { FormControl, FormBuilder } from '@angular/forms';
 })
 
 export class CreateBatchComponent {
-    public batch: any = "";
-    public ids : number;
+    public beerTypes: Map<number, String>;
+
+
     public messageForm = this.formBuilder.group({
         batchId: new FormControl(),
-        productType: new FormControl({ value: null }),
+        productType: new FormControl(),
         productAmount: new FormControl({ value: null }),
         machineSpeed: new FormControl({ value: null }),
     });
@@ -22,15 +23,14 @@ export class CreateBatchComponent {
         private socketIOService: SocketIOService,
         private formBuilder: FormBuilder
     ) {
-        this.socketIOService.emit('selectSpecificData', null);
-        this.socketIOService.listen("selectSpecificData").subscribe((data) => {
-            this.batch = data;
-            this.ids = data.BatchId;
-        })
+        this.beerTypes = new Map([[0, "Pilsner"], [1, "Wheat"], [2, "IPA"], [3, "Stout"], [4, "Ale"], [5, "Alcohol Free"]]);
     }
 
     public sendMessage(request: String): void {
         this.socketIOService.emit('selectSpecificData', null);
+        this.messageForm.value.productType = Number(this.messageForm.value.productType);
+        console.log(this.messageForm.value);
+
         switch (request) {
             case "start":
                 this.socketIOService.emit('execute', this.messageForm.value);

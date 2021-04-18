@@ -33,10 +33,12 @@ export class SearchBarComponent {
         this.timeOut = setTimeout(() => {
             let searchValue: number = Number(this.searchForm.value.searchValue);
 
-            if (searchValue != null) {
+            if (searchValue != 0) {
                 this.socketIOService.emit("selectSpecificData", Number(this.searchForm.value.searchValue.match(/\d+/g)));
                 document.getElementById("batch").style.display = "block";
-            } 
+            } else {
+                document.getElementById("batch").style.display = "none";
+            }
         }, 500);
     }
 

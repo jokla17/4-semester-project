@@ -12,7 +12,14 @@ io.on('connection', (socket) => {
     console.log("A client has connected... [ID: " + socket.id + "]");
 
     socket.on('execute', (msg) => {
-        io.emit('execute', msg)
+        if (!(msg instanceof String)) {
+            dbmanager.selectSpecificData(null, (callback) => {
+                msg.batchId = ++callback.BatchId;
+                io.emit('execute', msg)
+            });
+        } else {
+            io.emit('execute', msg)
+        }
     });
 
     socket.on('data', (msg) => {

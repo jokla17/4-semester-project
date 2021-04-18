@@ -2,11 +2,11 @@
     <h3>Create batch</h3>
 
     <form class="enableFlex rowFlex centerFlex wrapFlex " [formGroup]="messageForm" (ngSubmit)="sendMessage('start')">
-        <input class="shadow" type="number" formControlName="productType" placeholder="Enter a product type">
+        <select class="shadow" formControlName="productType">
+            <option *ngFor="let type of beerTypes | keyvalue" value="{{ type.key }}">{{ type.value }}</option>
+          </select>
         <input class="shadow" type="number" formControlName="productAmount" placeholder="Enter an amount">
         <input class="shadow" type="number" formControlName="machineSpeed" placeholder="Enter a speed">
         <input class="btnDefault btnSuccess shadow" type="submit" value="start">
     </form>
 </div>
-
-
