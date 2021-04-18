@@ -1,11 +1,25 @@
-.container {
-    min-height: 600px;
-}
-
 h2 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 1.5em;
     color: var(--primary-text-color);
+}
+
+span {
+    border-bottom: 1px solid var(--batch-row-border-color);
+}
+
+span:last-of-type {
+    border: 0;
+}
+
+span p:last-of-type {
+    font-style: italic;
+}
+
+p {
+    color: var(--third-text-color);
+    font-size: 1.1em;
+    margin: 35px 0 35px 0;
 }
 
 table {

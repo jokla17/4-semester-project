@@ -14,7 +14,7 @@ io.on('connection', (socket) => {
     socket.on('execute', (msg) => {
         if (!(msg instanceof String)) {
             dbmanager.selectSpecificData(null, (callback) => {
-                msg.batchId = ++callback.BatchId;
+                msg.batchId = callback == null ? 1 : ++callback.BatchId;
                 io.emit('execute', msg)
             });
         } else {

@@ -1,23 +1,29 @@
 <div class="wrapper">
     <div class="container" *ngIf="batch != undefined">
         <h2>Batch ID ({{ batch.BatchId }})</h2>
-        <table>
-            <tr>
-                <th>Created</th>
-                <th>Beer type</th>
-                <th>Amount processed</th>
-                <th>Acceptable</th>
-                <th>Defective</th>
-                <th>Speed used</th>
-            </tr>
-            <tr>
-                <td>{{ batch.DateTime}}</td>
-                <td>{{ batch.Type }}</td>
-                <td>{{ batch.ProdProcessedCount }}</td>
-                <td>{{ batch.ProdProcessedCount - batch.ProdDefectiveCount }}</td>
-                <td>{{ batch.ProdDefectiveCount }}</td>
-                <td>{{ batch.CurSpeed | number: '1.0-0' }}</td>
-            </tr>
-        </table>
+        <span class="enableFlex rowFlex spaceBetweenFlex">
+            <p>Created</p>
+            <p>{{ batch.DateTime}}</p>
+        </span>
+        <span class="enableFlex rowFlex spaceBetweenFlex">
+            <p>Beer type</p>
+            <p>{{ batch.Type }}</p>
+        </span>
+        <span class="enableFlex rowFlex spaceBetweenFlex">
+            <p>Amount processed</p>
+            <p>{{ batch.ProdProcessedCount }}</p>
+        </span>
+        <span class="enableFlex rowFlex spaceBetweenFlex">
+            <p>Acceptable</p>
+            <p>{{ batch.ProdProcessedCount - batch.ProdDefectiveCount }}</p>
+        </span>
+        <span class="enableFlex rowFlex spaceBetweenFlex">
+            <p>Defective</p>
+            <p>{{ batch.ProdDefectiveCount }}</p>
+        </span>
+        <span class="enableFlex rowFlex spaceBetweenFlex">
+            <p>Speed used</p>
+            <p>{{ batch.CurSpeed | number: '1.0-0' }}</p>
+        </span>
     </div>
 </div>
