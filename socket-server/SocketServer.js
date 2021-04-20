@@ -6,14 +6,20 @@ const io = require('socket.io')(http, {
         methods: ["GET", "POST", "PUT"]
     }
 });
-
 const dbmanager = require('./DatabaseManager');
 
 io.on('connection', (socket) => {
     console.log("A client has connected... [ID: " + socket.id + "]");
 
     socket.on('execute', (msg) => {
-        io.emit('execute', msg)
+        if (!(msg instanceof String)) {
+            dbmanager.selectSpecificData(null, (callback) => {
+                msg.batchId = callback == null ? 1 : ++callback.BatchId;
+                io.emit('execute', msg)
+            });
+        } else {
+            io.emit('execute', msg)
+        }
     });
 
     socket.on('data', (msg) => {

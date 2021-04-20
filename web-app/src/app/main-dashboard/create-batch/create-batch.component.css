@@ -1,3 +1,7 @@
+form {
+    width: 100%;
+}
+
 input[type="number"] {
     border: 2px solid var(--input-border-color);
     background-color: var(--input-border-bg-color);
@@ -6,8 +10,28 @@ input[type="number"] {
     border-radius: 12px; 
     margin: 0 5px 0 5px;
     font-size: 0.8em;
+    width: 100%;
+    max-width: 240px;
 }
 
 input[type="number"]::placeholder {
     color: var(--third-text-color);
 }
+
+select {
+    border: 2px solid var(--input-border-color);
+    background-color: var(--input-border-bg-color);
+    color: var(--third-text-color);
+    padding: 10px 0 10px 10px;
+    border-radius: 12px; 
+    margin: 0 5px 0 5px;
+    font-size: 0.8em;
+    width: 100%;
+    max-width: 240px;
+}
+
+select option {
+    font-size: 1.1em;
+    background-color:  var(--input-border-bg-color);
+}
+

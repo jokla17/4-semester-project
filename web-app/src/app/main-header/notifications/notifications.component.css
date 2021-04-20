@@ -29,6 +29,20 @@ img {
     width: 19px;
 }
 
+/** Blink **/
+.blink{
+    background-color: var(--container-bg-color);
+    animation: blink 1s linear infinite;
+}
+
+@keyframes blink{
+    0%   { background-color: var(--container-bg-color); }
+    49% { background-color: var(--container-bg-color) }
+    50% { background-color: var(--bell-alert-bg-color); }
+    99% { background-color: var(--bell-alert-bg-color); }
+    100% { background-color: var(--container-bg-color); }
+}
+
 /** Notification display **/
 #notificationDisplay {
     position: absolute;
@@ -101,3 +115,4 @@ img {
     border-bottom: 12px solid var(--notification-header-bg-color);
     margin: -11px 0 0 230px;
 }
+

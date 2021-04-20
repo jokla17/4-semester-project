@@ -24,6 +24,7 @@ export class NotificationsComponent {
         this.socketIOService.listen("dbData").subscribe((data) => {
             this.notifications.push(data);
             this.numberOfNotifications = this.notifications.length;
+            document.getElementById("button").classList.add("blink");
         })
     }
 
@@ -34,6 +35,7 @@ export class NotificationsComponent {
         } else if (this.hidden == false && this.notifications.length != 0) {
             this.hidden = true;
             this.numberOfNotifications = 0;
+            document.getElementById("button").classList.remove("blink");
         }
     }
 }
