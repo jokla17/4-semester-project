@@ -7,12 +7,11 @@ import { FormControl, FormBuilder } from '@angular/forms';
     templateUrl: './create-batch.component.html',
     styleUrls: ['./create-batch.component.css']
 })
-
 export class CreateBatchComponent {
     public beerTypes: Map<number, String>;
+    public selectedValue;
     private speedTypes: number[];
-    public selectedValue
-
+    
     public messageForm = this.formBuilder.group({
         batchId: new FormControl(),
         productType: new FormControl(),
@@ -23,8 +22,7 @@ export class CreateBatchComponent {
     constructor(
         private socketIOService: SocketIOService,
         private formBuilder: FormBuilder
-    ) {
-        this.messageForm.get('productType').setValue('pending');
+    ){
         this.beerTypes = new Map([[0, "Pilsner"], [1, "Wheat"], [2, "IPA"], [3, "Stout"], [4, "Ale"], [5, "Alcohol Free"]]);
         this.speedTypes = [435, 50, 85, 275, 65, 50];
         this.selectedValue = "";
@@ -60,5 +58,8 @@ export class CreateBatchComponent {
                 this.socketIOService.emit('execute', this.messageForm.value);
                 break;
         }
+
+        this.messageForm.reset();
+        this.selectedValue = "";
     }
 }

@@ -10,6 +10,7 @@ public class Tags {
         put("::Program:Cube.Admin.StopReason.Id",         "StopReasonId");
         put("::Program:Cube.Admin.StopReason.Value",      "StopReasonValue");
         put("::Program:Cube.Admin.Parameter[0]",          "ProductId");
+        put("::Program:Cube.Admin.Parameter[0].Value",   "Type");  
 
         put("::Program:Cube.Status.StateCurrent",         "State");
         put("::Program:Cube.Status.MachSpeed",            "Speed");
@@ -42,6 +43,7 @@ public class Tags {
         put("StopReasonId",           "::Program:Cube.Admin.StopReason.Id");     
         put("StopReasonValue",        "::Program:Cube.Admin.StopReason.Value");  
         put("ProductId",              "::Program:Cube.Admin.Parameter[0]");   
+        put("Type",              "::Program:Cube.Admin.Parameter[0].Value");   
     }};
 
     public HashMap<String, String> statusTags = new HashMap<String, String>() {{

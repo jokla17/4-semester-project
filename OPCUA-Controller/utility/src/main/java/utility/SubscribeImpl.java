@@ -61,11 +61,9 @@ public class SubscribeImpl extends Thread {
             BiConsumer<UaMonitoredItem, Integer> onItemCreated = (item, id) -> item.setValueConsumer(SubscribeImpl::onSubscriptionValue);
             UaSubscription subscription = ServerConnection.getInstance().getSession().getSubscriptionManager().createSubscription(1000.0).get();
 
-            dataSet.put("Type", typeConverter(new ReadImpl(tags.commandTags.get("Type")).read()));
-            System.out.println(dataSet);
-            
             List<UaMonitoredItem> items = subscription.createMonitoredItems(TimestampsToReturn.Both,
                     Arrays.asList(createMonitoredItem(tags.adminTags.get("ProdProcessedCount")),
+                            createMonitoredItem(tags.adminTags.get("Type")),
                             createMonitoredItem(tags.statusTags.get("BatchId")),
                             createMonitoredItem(tags.statusTags.get("Products")),
                             createMonitoredItem(tags.statusTags.get("MachSpeed")),
@@ -99,12 +97,20 @@ public class SubscribeImpl extends Thread {
         }
 
         if (value.getValue().getValue() != null) {
-            dataSet.put(tags.nodeMap.get(item.getReadValueId().getNodeId().getIdentifier().toString()), value.getValue().getValue());
+            String name = tags.nodeMap.get(item.getReadValueId().getNodeId().getIdentifier().toString());
+            Object val = value.getValue().getValue();
+
+            if (name.contains("Type")) {
+                dataSet.put(name, typeConverter((float) val));
+            } else {
+                dataSet.put(name, val);
+            }
+
             isp.sendDataSet("data", dataSet);
         }
     }
 
-    private String typeConverter(float type) {
+    private static String typeConverter(float type) {
         String t = null;
 
         switch ((int) type) {
