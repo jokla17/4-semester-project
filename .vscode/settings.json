@@ -9,7 +9,7 @@
         "**/.gitignore": true,
         "**/.hg": true,
         "**/.svn": true,
-        "**/*.spec.ts": true,
+        "**/*.spec.ts": false,
         "**/angular.json": true,
         "**/CVS": true,
         "**/e2e": true,
