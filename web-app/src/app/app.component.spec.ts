@@ -1,4 +1,4 @@
-import { DebugElement } from '@angular/core';
+import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -16,6 +16,7 @@ import { MainHeaderComponent } from './main-header/main-header.component';
 import { MainNavigationComponent } from './main-navigation/main-navigation.component';
 import { MainStatisticalAnalysis } from './main-statistical-analysis/main-statistical-analysis.component';
 import { SocketIOService } from './socketio.service';
+import { SearchBarComponent } from './main-header/search-bar/search-bar.component';
 
 
 describe('AppComponent', () => {
@@ -49,10 +50,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'web-app'`, () => {
+  it(`should have as title 'Ajatek'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('web-app');
+    expect(app.title).toEqual('Ajatek');
   });
 
 
@@ -95,9 +96,17 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
+
+  it('create batch form invalid when empty', () => {
+    const fixture = TestBed.createComponent(CreateBatchComponent);
+    expect(fixture.componentInstance.messageForm.valid).toBeFalsy;
+  });
+
+  it('search form invalid when empty', () => {
+    const fixture = TestBed.createComponent(SearchBarComponent);
+    expect(fixture.componentInstance.searchForm.valid).toBeFalsy;
+  });
 });
-
-
 
 
 
