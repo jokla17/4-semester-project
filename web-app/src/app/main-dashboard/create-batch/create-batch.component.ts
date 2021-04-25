@@ -29,7 +29,7 @@ export class CreateBatchComponent {
     }
 
     public sendMessage(request: String): void {
-        this.socketIOService.emit('selectSpecificData', null);
+        this.socketIOService.emit('selectBatch', null);
         this.messageForm.value.productType = Number(this.messageForm.value.productType);
 
         switch (this.messageForm.value.productType) {

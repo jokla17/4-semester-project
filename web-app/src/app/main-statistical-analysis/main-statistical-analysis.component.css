@@ -1,0 +1,21 @@
+h1 {
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: var(--primary-text-color);
+}
+
+input[type="number"] {
+    border: 2px solid var(--input-border-color);
+    background-color: var(--input-border-bg-color);
+    color: var(--third-text-color);
+    padding: 10px;
+    border-radius: 12px; 
+    margin: 0 5px 0 5px;
+    font-size: 0.8em;
+    width: 100%;
+    max-width: 240px;
+}
+
+input::placeholder {
+    color: var(--third-text-color);
+}

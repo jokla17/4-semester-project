@@ -13,7 +13,7 @@ io.on('connection', (socket) => {
 
     socket.on('execute', (msg) => {
         if (!(msg instanceof String)) {
-            dbmanager.selectSpecificData(null, (callback) => {
+            dbmanager.selectSpecificData("batch_reports", null, (callback) => {
                 msg.batchId = callback == null ? 1 : ++callback.BatchId;
                 io.emit('execute', msg)
             });
@@ -26,17 +26,23 @@ io.on('connection', (socket) => {
         io.emit('data', msg);
     });
 
-    socket.on('dbData', (msg) => {
-        socket.broadcast.emit('dbData', msg);
-        dbmanager.updateData(msg);
+    socket.on('insertData', (msg) => {
+        socket.broadcast.emit('insertData', msg);
+        dbmanager.updateData('production_logs', {"BatchId" : msg.BatchId, ... msg.Logs});
+        delete msg.Logs;
+        dbmanager.updateData('batch_reports', msg);
     });
 
     socket.on('selectAllData', () => {
         dbmanager.selectAllData((callback) => io.emit('selectAllData', callback));
     });
 
-    socket.on('selectSpecificData', (data) => {
-        dbmanager.selectSpecificData(data, (callback) => io.emit('selectSpecificData', callback));
+    socket.on('selectBatch', (data) => {
+        dbmanager.selectSpecificData("batch_reports", data, (callback) => io.emit('selectBatch', callback));
+    });
+
+    socket.on('selectLogs', (data) => {
+        dbmanager.selectSpecificData("production_logs", data, (callback) => io.emit('selectLogs', callback));
     });
 
     socket.on('disconnect', () => {

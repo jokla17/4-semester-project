@@ -4,18 +4,18 @@
         <tr>
             <th>Batch ID</th>
             <th>Beer Type</th>
-            <th>Amount Produced</th>
-            <th>State</th>
+            <th>Products</th>
+            <th>Created</th>
         </tr>
-        <tr *ngFor="let batch of BatchReports | keyvalue | slice:back:next" [routerLink]="['/batch-report', batch.key]">
+        <tr *ngFor="let batch of BatchReports | keyvalue | slice:back:next" [routerLink]="['/batch-report/batch', batch.key]">
             <td>{{ batch.key }}</td>
             <td>{{ batch.value.Type }}</td>
-            <td>{{ batch.value.ProdProcessedCount }}</td>
-            <td>{{ batch.value.State }}</td>
+            <td>{{ batch.value.Products }}</td>
+            <td>{{ batch.value.DateTime }}</td>
         </tr>
     </table>
     <span class="enableFlex spaceBetweenFlex">
-        <button (click)="goBack()" class="btnDefault btnSuccess">BACK</button>
-        <button (click)="goNext()" class="btnDefault btnSuccess">NEXT</button>
+        <button [disabled]="backAvailable" (click)="goBack()" id="test" class="btnDefault btnSuccess">BACK</button>
+        <button [disabled]="nextAvailable" (click)="goNext()" class="btnDefault btnSuccess">NEXT</button>
     </span>
 </div>

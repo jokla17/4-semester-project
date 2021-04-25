@@ -2,6 +2,7 @@ package utility;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -29,6 +30,7 @@ public class SubscribeImpl extends Thread {
     private static Tags tags = new Tags();
     private static AtomicLong clientHandles = new AtomicLong(1L);
     private static Map<String, Object> dataSet = new HashMap<String, Object>();
+    private static Map<String, ArrayList<Object>> logs;
     private static ServiceLoader<ISocketProvider> service = ServiceLoader.load(ISocketProvider.class);
     private static ISocketProvider isp = service.iterator().next();
 
@@ -44,11 +46,20 @@ public class SubscribeImpl extends Thread {
         if (!this.isAlive()) {
             this.start();
         }
+
+        logs = new HashMap<String, ArrayList<Object>>();{
+            logs.put("ProdProcessedCount", new ArrayList<Object>());
+            logs.put("Humidity", new ArrayList<Object>());
+            logs.put("Temperature", new ArrayList<Object>());
+            logs.put("Vibration", new ArrayList<Object>());
+            logs.put("ProdDefectiveCount", new ArrayList<Object>());
+            logs.put("State", new ArrayList<Object>());
+        };
     }
 
-    public MonitoredItemCreateRequest createMonitoredItem(String identifier) {
+    public static MonitoredItemCreateRequest createMonitoredItem(String identifier) {
         UInteger clientHandle = Unsigned.uint(clientHandles.getAndIncrement());
-        MonitoringParameters parameters = new MonitoringParameters(clientHandle, 200.0, null, Unsigned.uint(10), true);
+        MonitoringParameters parameters = new MonitoringParameters(clientHandle, 500.0, null, Unsigned.uint(10), true);
         NodeId nodeId = new NodeId(6, identifier);
         ReadValueId readValueId = new ReadValueId(nodeId, AttributeId.Value.uid(), null, null);
         MonitoredItemCreateRequest micr = new MonitoredItemCreateRequest(readValueId, MonitoringMode.Reporting, parameters);
@@ -87,18 +98,23 @@ public class SubscribeImpl extends Thread {
     }
 
     private static void onSubscriptionValue(UaMonitoredItem item, DataValue value) {
+        // Final
         if (item.getReadValueId().getNodeId().getIdentifier().equals("::Program:Cube.Status.StateCurrent")
                 && value.getValue().getValue().toString().matches("2|5|9|11|17")) {
 
-            dataSet.put("DateTime", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")));
-            isp.sendDataSet("dbData", dataSet);
-
+            sendFinalDataset();
             System.out.println("Batch production done... awaiting next!");
+            return;
         }
 
+        // Real time
         if (value.getValue().getValue() != null) {
             String name = tags.nodeMap.get(item.getReadValueId().getNodeId().getIdentifier().toString());
             Object val = value.getValue().getValue();
+
+            if (logs.containsKey(name)) {
+                logs.get(name).add(val);
+            }
 
             if (name.contains("Type")) {
                 dataSet.put(name, typeConverter((float) val));
@@ -135,5 +151,24 @@ public class SubscribeImpl extends Thread {
         }
 
         return t;
+    }
+
+    private static void sendFinalDataset() {
+        dataSet.remove("Hops");
+        dataSet.remove("Humidity");
+        dataSet.remove("Malt");
+        dataSet.remove("Wheat");
+        dataSet.remove("Yeast");
+        dataSet.remove("Vibration");
+        dataSet.remove("Barley");
+        dataSet.remove("Maintenance");
+        dataSet.remove("Temperature");
+        dataSet.remove("State");
+        dataSet.remove("ProdDefectiveCount");
+        dataSet.remove("ProdProcessedCount");
+
+        dataSet.put("Logs", logs); 
+        dataSet.put("DateTime", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")));
+        isp.sendDataSet("insertData", dataSet);
     }
 }
