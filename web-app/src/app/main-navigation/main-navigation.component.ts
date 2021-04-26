@@ -7,7 +7,19 @@ import { AssetsService } from "../assets.service";
     styleUrls : ["./main-navigation.component.css"]
 })
 export class MainNavigationComponent {
+    public hideMobileNav;
+    
     constructor (
         public assetsService : AssetsService
-    ){}
-}
+    ){
+        this.hideMobileNav = false;
+    }
+
+    public showMobileNav() : void{
+        if (this.hideMobileNav) {
+            this.hideMobileNav = false
+        } else {
+            this.hideMobileNav = true;
+        }
+    }
+ }

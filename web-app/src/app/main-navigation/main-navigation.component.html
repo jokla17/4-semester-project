@@ -1,24 +1,43 @@
 <nav>
     <div class="wrapper">
-        <ul class="enableFlex rowFlex wrapFlex">
+        <ul id="desktopNav" class="enableFlex rowFlex wrapFlex">
             <a routerLink="/dashboard" routerLinkActive="active">
                 <li class="enableFlex rowFlex centerFlex">
-                    <img src="{{ assetsService.dashboardIcon }}">
-                    Dashboard
+                    <img src="{{ assetsService.dashboardIcon }}"> Dashboard
                 </li>
             </a>
             <a routerLink="/batch-reports" routerLinkActive="active">
                 <li class="enableFlex rowFlex centerFlex">
-                    <img src="{{ assetsService.batchReportIcon }}">
-                    Batch reports
+                    <img src="{{ assetsService.batchReportIcon }}"> Batch reports
                 </li>
             </a>
             <a routerLink="/statistical-analysis" routerLinkActive="active">
                 <li class="enableFlex rowFlex centerFlex">
-                    <img src="{{ assetsService.statisticalAnalysisIcon }}">
-                    Statistial Analysis
+                    <img src="{{ assetsService.statisticalAnalysisIcon }}"> Statistial Analysis
                 </li>
             </a>
+        </ul>
+        <ul id="mobileNav" class="enableFlex columnFlex">
+            <li id="burgerMenuIcon" class="enableFlex rowFlex centerRightFlex" (click)="showMobileNav()">
+                <img src="{{ assetsService.navigationMenuIcon }}">
+            </li>
+            <span *ngIf="hideMobileNav">
+                <a routerLink="/dashboard" routerLinkActive="active">
+                    <li class="enableFlex rowFlex centerLeftFlex">
+                        <img src="{{ assetsService.dashboardIcon }}"> Dashboard
+                    </li>
+                </a>
+                <a routerLink="/batch-reports" routerLinkActive="active">
+                    <li class="enableFlex rowFlex centerLeftFlex">
+                        <img src="{{ assetsService.batchReportIcon }}"> Batch reports
+                    </li>
+                </a>
+                <a routerLink="/statistical-analysis" routerLinkActive="active">
+                    <li class="enableFlex rowFlex centerLeftFlex">
+                        <img src="{{ assetsService.statisticalAnalysisIcon }}"> Statistial Analysis
+                    </li>
+                </a>
+            </span>
         </ul>
     </div>
 </nav>
