@@ -14,6 +14,7 @@ export class AssetsService {
     public vibrationIcon: String;
     public productsPerMinuteIcon: String;
     public defectProductsIcon: String;
+    public navigationMenuIcon: String;
 
     constructor() { 
         this.changeAssets("light");
@@ -37,6 +38,7 @@ export class AssetsService {
                 this.vibrationIcon = "assets/icons/vibration-icon.png";
                 this.productsPerMinuteIcon = "assets/icons/products-per-minute-icon.png";
                 this.defectProductsIcon = "assets/icons/defect-products-icon.png";
+                this.navigationMenuIcon = "assets/icons/navigation-menu-icon.png";
                 break;
             case "dark":
                 this.mainLogo = "assets/ajatek_logo_2.png";
@@ -54,6 +56,7 @@ export class AssetsService {
                 this.vibrationIcon = "assets/icons/white-mode/vibration-icon.png";
                 this.productsPerMinuteIcon = "assets/icons/white-mode/products-per-minute-icon.png";
                 this.defectProductsIcon = "assets/icons/white-mode/defect-products-icon.png";
+                this.navigationMenuIcon = "assets/icons/white-mode/navigation-menu-icon.png";
                 break;
         }
     }

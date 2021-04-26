@@ -21,7 +21,7 @@ export class NotificationsComponent {
         this.numberOfNotifications = this.notifications.length;
         this.hidden = false;
 
-        this.socketIOService.listen("dbData").subscribe((data) => {
+        this.socketIOService.listen("insertData").subscribe((data) => {
             this.notifications.push(data);
             this.numberOfNotifications = this.notifications.length;
             document.getElementById("button").classList.add("blink");

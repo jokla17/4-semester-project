@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ChartsModule } from 'ng2-charts';
 
 import { SocketIOService } from './socketio.service'; 
 
@@ -24,6 +25,8 @@ import { MainStatisticalAnalysis } from './main-statistical-analysis/main-statis
 import { AssetsService } from './assets.service';
 import { BatchReportsTable } from './main-batch-reports/batch-reports-table/batch-reports-table.component';
 import { MainSingleBatchReport } from './main-single-batch-report/main-single-batch-report.component';
+import { BarchartComponent } from './main-statistical-analysis/barchart/barchart.component';
+import { LinechartComponent } from './main-statistical-analysis/linechart/linechart.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,8 @@ import { MainSingleBatchReport } from './main-single-batch-report/main-single-ba
     MainSingleBatchReport, // Single Batch Report
 
     MainStatisticalAnalysis, // Statistical analysis page components
+    BarchartComponent,
+    LinechartComponent
   ],
   imports: [
     BrowserModule,
@@ -59,8 +64,10 @@ import { MainSingleBatchReport } from './main-single-batch-report/main-single-ba
       { path: 'dashboard', component: MainDashboardComponent },
       { path: 'batch-reports', component: MainBatchReports },
       { path: 'statistical-analysis', component: MainStatisticalAnalysis },
-      { path: 'batch-report/:batchId', component: MainSingleBatchReport }
+      { path: 'statistical-analysis/batch/:batchId', component: MainStatisticalAnalysis },
+      { path: 'batch-report/batch/:batchId', component: MainSingleBatchReport }
     ]),
+    ChartsModule
   ],
   providers: [ SocketIOService, AssetsService ],
   bootstrap: [ AppComponent ]

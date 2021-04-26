@@ -9,7 +9,7 @@
 
 #button:hover {
     background-color: var(--bell-alert-bg-color);
-    cursor: pointer;  
+    cursor: pointer;
 }
 
 #alertReminder {
@@ -29,21 +29,41 @@ img {
     width: 19px;
 }
 
+@media (max-width: 800px) {
+    #button {
+        margin: 10px 0 0 0;
+    }
+}
+
+
 /** Blink **/
-.blink{
+
+.blink {
     background-color: var(--container-bg-color);
     animation: blink 1s linear infinite;
 }
 
-@keyframes blink{
-    0%   { background-color: var(--container-bg-color); }
-    49% { background-color: var(--container-bg-color) }
-    50% { background-color: var(--bell-alert-bg-color); }
-    99% { background-color: var(--bell-alert-bg-color); }
-    100% { background-color: var(--container-bg-color); }
+@keyframes blink {
+    0% {
+        background-color: var(--container-bg-color);
+    }
+    49% {
+        background-color: var(--container-bg-color)
+    }
+    50% {
+        background-color: var(--bell-alert-bg-color);
+    }
+    99% {
+        background-color: var(--bell-alert-bg-color);
+    }
+    100% {
+        background-color: var(--container-bg-color);
+    }
 }
 
+
 /** Notification display **/
+
 #notificationDisplay {
     position: absolute;
     margin: 15px 0 0 -200px;
@@ -52,7 +72,7 @@ img {
     z-index: 10;
 }
 
-#notificationDisplay h3{
+#notificationDisplay h3 {
     font-size: 0.9em;
     text-transform: uppercase;
     padding: 6px 20px 6px 15px;
@@ -60,7 +80,6 @@ img {
     background-color: var(--notification-header-bg-color);
     color: var( --secondary-text-color)
 }
-
 
 #notificationDisplayInnerBox {
     padding: 14px 20px 14px 15px;
@@ -108,11 +127,19 @@ img {
 
 #triangle {
     position: absolute;
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-left: 14px solid transparent;
     border-right: 14px solid transparent;
     border-bottom: 12px solid var(--notification-header-bg-color);
     margin: -11px 0 0 230px;
 }
 
+@media (max-width: 800px) {
+    #triangle {
+        margin-left: 140px;
+    }
+    #notificationDisplay {
+        margin-left: -135px;
+    }
+}

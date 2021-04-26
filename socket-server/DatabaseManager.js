@@ -18,7 +18,7 @@ let initalizeDatabase = () => {
 initalizeDatabase();
 
 // Insert or update data
-exports.updateData = (jsonObject) => {
+exports.updateData = (collection, jsonObject) => {
   MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
     let dbo = db.db("ajatekdb");
 
@@ -36,9 +36,8 @@ exports.updateData = (jsonObject) => {
     };
 
     // Opertion sent to MongoDB database.
-    dbo.collection("batch_reports").updateOne(myquery, newvalues, options, function (err, res) {
+    dbo.collection(collection).updateOne(myquery, newvalues, options, function (err, res) {
       if (err) throw err;
-      console.log("1 document updated");
       db.close();
     });
   });
@@ -58,19 +57,19 @@ exports.selectAllData = (callback) => {
 }
 
 // Select one
-exports.selectSpecificData = (search, callback) => {
+exports.selectSpecificData = (collection, search, callback) => {
   MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
     if (err) throw err;
     var dbo = db.db("ajatekdb");
 
     if (search != null) {
-      dbo.collection("batch_reports").findOne({ BatchId: search }, function (err, result) {
+      dbo.collection(collection).findOne({ BatchId: search }, function (err, result) {
         if (err) throw err;
         db.close();
         return callback(result);
       });
     } else {
-      dbo.collection("batch_reports").findOne({}, { sort: { $natural: -1 } }, function (err, result) {
+      dbo.collection(collection).findOne({}, { sort: { $natural: -1 } }, function (err, result) {
         if (err) throw err;
         db.close();
         return callback(result);

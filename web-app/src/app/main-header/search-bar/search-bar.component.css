@@ -6,7 +6,7 @@ input {
     padding-left: 45px;
     background-color: var(--search-bg-color);
     color: var(--third-text-color);
-    box-shadow: inset 0px 0px 5px rgba(68,68,68,0.1);
+    box-shadow: inset 0px 0px 5px rgba(68, 68, 68, 0.1);
     font-size: 0.9em;
 }
 
@@ -45,4 +45,14 @@ span span p:hover {
     background-color: var(--search-hover-color);
     cursor: pointer;
     border-radius: 0 0 12px 12px;
+}
+
+@media (max-width: 800px) {
+    img {
+        margin: 5px 0 0 15px;
+    }
+    input {
+        margin: 10px 0 0 0;
+        width: 250px;
+    }
 }

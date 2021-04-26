@@ -7,7 +7,7 @@ input[type="number"] {
     background-color: var(--input-border-bg-color);
     color: var(--third-text-color);
     padding: 10px;
-    border-radius: 12px; 
+    border-radius: 12px;
     margin: 0 5px 0 5px;
     font-size: 0.8em;
     width: 100%;
@@ -23,7 +23,7 @@ select {
     background-color: var(--input-border-bg-color);
     color: var(--third-text-color);
     padding: 10px 0 10px 10px;
-    border-radius: 12px; 
+    border-radius: 12px;
     margin: 0 5px 0 5px;
     font-size: 0.8em;
     width: 100%;
@@ -32,6 +32,22 @@ select {
 
 select option {
     font-size: 1.1em;
-    background-color:  var(--input-border-bg-color);
+    background-color: var(--input-border-bg-color);
 }
 
+@media (max-width: 800px) {
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    form input,
+    form select {
+        margin-bottom: 20px;
+    }
+    form select:first-of-type {
+        margin-top: 5px;
+    }
+    form input:last-of-type {
+        margin: 0;
+    }
+}

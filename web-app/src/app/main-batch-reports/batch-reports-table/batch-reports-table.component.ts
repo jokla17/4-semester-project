@@ -11,12 +11,13 @@ export class BatchReportsTable {
     public span: number = 7;
     public back: number = 0
     public next: number = 7;
+    public backAvailable : boolean = false;
+    public nextAvailable : boolean = false;
 
     constructor(
         private socketIOService: SocketIOService
     ) {
         this.socketIOService.emit("selectAllData", null);
-
         this.socketIOService.listen("selectAllData").subscribe((data) => {
             this.BatchReports = new Map<number, String>(data.map(i => [i.BatchId, i]));
         })
@@ -26,13 +27,13 @@ export class BatchReportsTable {
         if (this.next < this.BatchReports.size) {
             this.back = this.back + this.span;
             this.next = this.next + this.span;
-        }
+        } 
     }
 
     public goBack(): void {
         if (this.back != 0) {
             this.back = this.back - this.span;
             this.next = this.next - this.span;
-        }
+        } 
     }
 }

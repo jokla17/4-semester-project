@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { SocketIOService } from '../../socketio.service';
 import { FormControl, FormBuilder } from '@angular/forms';
 
@@ -11,6 +11,8 @@ export class CreateBatchComponent {
     public beerTypes: Map<number, String>;
     public selectedValue;
     private speedTypes: number[];
+    public startDisabled;
+    public startText;
     
     public messageForm = this.formBuilder.group({
         batchId: new FormControl(),
@@ -21,15 +23,28 @@ export class CreateBatchComponent {
 
     constructor(
         private socketIOService: SocketIOService,
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        public elementRef: ElementRef,
     ){
         this.beerTypes = new Map([[0, "Pilsner"], [1, "Wheat"], [2, "IPA"], [3, "Stout"], [4, "Ale"], [5, "Alcohol Free"]]);
         this.speedTypes = [435, 50, 85, 275, 65, 50];
         this.selectedValue = "";
+        this.startDisabled = false;
+        this.startText = "start";
+
+        this.socketIOService.listen("insertData").subscribe(() => {
+            this.startDisabled = false;
+            this.startText = "start";
+            this.elementRef.nativeElement.querySelector("#btnStart").classList.add("btnSuccess"); 
+        })
     }
 
     public sendMessage(request: String): void {
-        this.socketIOService.emit('selectSpecificData', null);
+        this.startDisabled = true;
+        this.startText = "running...";
+        this.elementRef.nativeElement.querySelector("#btnStart").classList.remove("btnSuccess"); 
+
+        this.socketIOService.emit('selectBatch', null);
         this.messageForm.value.productType = Number(this.messageForm.value.productType);
 
         switch (this.messageForm.value.productType) {

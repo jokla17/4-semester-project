@@ -22,7 +22,7 @@ export class SearchBarComponent {
     ) {
         this.searchBatch = "";
 
-        this.socketIOService.listen("selectSpecificData").subscribe((data) => {
+        this.socketIOService.listen("selectBatch").subscribe((data) => {
             this.searchBatch = data;
         })
     }
@@ -34,7 +34,7 @@ export class SearchBarComponent {
             let searchValue: number = Number(this.searchForm.value.searchValue);
 
             if (searchValue != 0) {
-                this.socketIOService.emit("selectSpecificData", Number(this.searchForm.value.searchValue.match(/\d+/g)));
+                this.socketIOService.emit("selectBatch", Number(this.searchForm.value.searchValue.match(/\d+/g)));
                 document.getElementById("batch").style.display = "block";
             } else {
                 document.getElementById("batch").style.display = "none";

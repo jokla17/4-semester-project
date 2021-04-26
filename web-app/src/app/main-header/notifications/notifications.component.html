@@ -6,7 +6,7 @@
 <div *ngIf="hidden" id="notificationDisplay" class="shadow">
     <span id="triangle"></span>
     <h3>Notifications</h3>
-    <div *ngFor="let notification of notifications" id="notificationDisplayInnerBox" class="enableFlex columnFlex rightFlex" [routerLink]="['/batch-report', notification.BatchId]">
+    <div *ngFor="let notification of notifications" id="notificationDisplayInnerBox" class="enableFlex columnFlex rightFlex" [routerLink]="['/batch-report/batch', notification.BatchId]">
         <p>new</p>
         <p>Batch production (ID: {{ notification.BatchId }}) has been completed!</p>
         <p>{{ notification.DateTime }}</p>

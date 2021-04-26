@@ -9,6 +9,7 @@ import { SocketIOService } from "../socketio.service";
 })
 export class MainSingleBatchReport {
     public batch : any;
+    public logs : any;
 
     constructor (
         private route : ActivatedRoute,
@@ -17,9 +18,14 @@ export class MainSingleBatchReport {
         const routeParams = this.route.snapshot.paramMap;
         const batchIdFromRoute = Number(routeParams.get("batchId"));
 
-        this.socketIOService.emit("selectSpecificData", batchIdFromRoute);
-        this.socketIOService.listen("selectSpecificData").subscribe((data) => {
+        this.socketIOService.emit("selectBatch", batchIdFromRoute);
+        this.socketIOService.listen("selectBatch").subscribe((data) => {
             this.batch = data;
+        });
+
+        this.socketIOService.emit("selectLogs", batchIdFromRoute);
+        this.socketIOService.listen("selectLogs").subscribe((data) => {
+            this.logs = data;
         });
     }
 }

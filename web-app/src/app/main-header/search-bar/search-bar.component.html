@@ -3,7 +3,7 @@
         <input formControlName="searchValue" (keyup)="search()" type="text" placeholder="Search by batch id...">
     </form>
     <img src="{{ assetsService.searchIcon }}">
-    <span id="batch" (click)="hide()" [routerLink]="['/batch-report', searchBatch.BatchId]">
+    <span id="batch" (click)="hide()" [routerLink]="['/batch-report/batch', searchBatch.BatchId]">
         <p>Batch {{ searchBatch.BatchId }}</p>
     </span>
 </span>

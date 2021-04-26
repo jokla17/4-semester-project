@@ -7,3 +7,17 @@ header img {
     width: 180px;
 }
 
+@media (max-width: 800px) {
+    .wrapper span {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .wrapper span span {
+        flex-direction: column;
+    }
+    header img {
+        margin-bottom: 10px;
+    }
+}

@@ -32,7 +32,9 @@
     --footer-bg-color: rgba(255, 255, 255, 0.75);
 }
 
+
 /** Default overall settings **/
+
 * {
     margin: 0;
     padding: 0;
@@ -42,10 +44,12 @@
     list-style-type: none;
     text-decoration: none;
     outline: none;
-    font-family: 'Roboto', sans-serif; 
+    font-family: 'Roboto', sans-serif;
 }
 
+
 /** Flexbox **/
+
 .enableFlex {
     display: flex;
 }
@@ -105,8 +109,11 @@
     flex: 2;
 }
 
+
 /** Default page design **/
-html, body {
+
+html,
+body {
     height: 100%;
 }
 
@@ -121,14 +128,13 @@ body {
 }
 
 .container {
-    height: 100%;
     background-color: var(--container-bg-color);
     border-radius: 12px;
     padding: 30px 30px 30px 30px;
     margin-bottom: 20px;
 }
 
-.container > h3 {
+.container>h3 {
     font-size: 1em;
     color: var(--primary-text-color);
     text-transform: uppercase;
@@ -152,7 +158,7 @@ body {
     cursor: pointer;
 }
 
-.btnSuccess{
+.btnSuccess {
     background-color: var(--btn-success-bg-color);
     color: var(--secondary-text-color);
     border: 1px solid var(--btn-success-border-color);

@@ -7,6 +7,6 @@
             <option *ngFor="let type of beerTypes | keyvalue" value="{{ type.key }}">{{ type.value }}</option>
           </select>
         <input class="shadow" type="number" formControlName="productAmount" placeholder="Enter amount...">
-        <input class="btnDefault btnSuccess shadow" id="btnStart" type="submit" value="start">
+        <input [disabled]="startDisabled" class="btnDefault btnSuccess shadow" id="btnStart" type="submit" value="{{ startText }}">
     </form>
 </div>

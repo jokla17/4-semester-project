@@ -1,0 +1,11 @@
+<div class="wrapper">
+    <div class="container">
+        <h1>Statistical analysis</h1>
+        <form class="enableFlex rowFlex centerFlex" [formGroup]="statsForm" (ngSubmit)="findBatch()">
+            <input formControlName="batchValue" type="number" placeholder="Search batch...">
+            <input class="btnDefault btnSuccess shadow" id="btnStart" type="submit" value="Find">
+        </form>
+    </div>
+    <app-barchart></app-barchart>
+    <app-linechart></app-linechart>
+</div>
