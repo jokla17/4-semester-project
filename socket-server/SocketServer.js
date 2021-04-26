@@ -1,12 +1,10 @@
-const app = require('express')();
+const express = require('express');
+const app = express();
 const http = require('http').Server(app);
-const io = require('socket.io')(http, {
-    cors: {
-        origin: "http://localhost:4200",
-        methods: ["GET", "POST", "PUT"]
-    }
-});
+const io = require('socket.io')(http);
 const dbmanager = require('./DatabaseManager');
+
+app.use('/', express.static('../web-app/dist/web-app'));
 
 io.on('connection', (socket) => {
     console.log("A client has connected... [ID: " + socket.id + "]");
@@ -28,7 +26,7 @@ io.on('connection', (socket) => {
 
     socket.on('insertData', (msg) => {
         socket.broadcast.emit('insertData', msg);
-        dbmanager.updateData('production_logs', {"BatchId" : msg.BatchId, ... msg.Logs});
+        dbmanager.updateData('production_logs', { "BatchId": msg.BatchId, ...msg.Logs });
         delete msg.Logs;
         dbmanager.updateData('batch_reports', msg);
     });
