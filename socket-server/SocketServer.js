@@ -1,15 +1,10 @@
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);
-const io = require('socket.io')(http, {
-    cors: {
-        origin: "http://localhost:4200",
-        methods: ["GET", "POST", "PUT"]
-    }
-});
+const io = require('socket.io')(http);
 const dbmanager = require('./DatabaseManager');
 
-//app.use('/', express.static('../web-app/dist/web-app'));
+app.use('/', express.static('../web-app/dist/web-app'));
 
 io.on('connection', (socket) => {
     console.log("A client has connected... [ID: " + socket.id + "]");
