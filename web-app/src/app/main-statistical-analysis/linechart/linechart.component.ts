@@ -29,6 +29,7 @@ export class LinechartComponent {
     public lineChartLabels: Label[] = [];
     public lineChartOptions = {
         responsive: true,
+        maintainAspectRatio: false,
         scales: {
             yAxes: [{
                 ticks: {

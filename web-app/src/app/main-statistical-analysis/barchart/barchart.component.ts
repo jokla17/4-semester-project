@@ -11,6 +11,7 @@ import { SocketIOService } from "src/app/socketio.service";
 export class BarchartComponent {
     public barChartOptions: ChartOptions = {
         responsive: true,
+        maintainAspectRatio: false,
         scales: {
             yAxes: [{
                 ticks: {

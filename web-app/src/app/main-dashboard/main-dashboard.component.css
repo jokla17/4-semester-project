@@ -1,0 +1,11 @@
+@media (max-width: 800px) {
+    .rowFlex {
+        flex-direction: column;
+        justify-content: normal;
+        align-content: normal;
+    }
+    .container {
+        width: 100%;
+        margin: 0;
+    }
+}

@@ -1,6 +1,6 @@
-h2 {
+h1 {
     margin-bottom: 10px;
-    font-size: 1.5em;
+    font-size: 1.7em;
     color: var(--primary-text-color);
 }
 
@@ -23,33 +23,11 @@ p {
     margin: 35px 0 35px 0;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-table tr:first-of-type {
-    text-transform: uppercase;
-}
-
-table th {
-    text-align: left;
-}
-
-table tr, th, td {
-    font-size: 1em;
-    color: var(--third-text-color);
-}
-
-tr:first-of-type {
-    border-bottom: 2px solid var(--third-text-color);
-}
-
-table th {
-    font-size: 0.85em;
-    padding-bottom: 15px;
-}
-
-table td {
-    padding: 20px 0px 20px 0px;
+@media (max-width: 800px) {
+    h1 {
+        font-size: 1.3em;
+    }
+    p {
+        font-size: 0.9em;
+    }
 }
