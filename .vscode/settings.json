@@ -6,7 +6,6 @@
         "**/.DS_Store": true,
         "**/.editorconfig": true,
         "**/.git": true,
-        "**/.gitignore": true,
         "**/.hg": true,
         "**/.svn": true,
         "**/*.spec.ts": false,
