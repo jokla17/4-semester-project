@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\Projects\GitHub Projects\4-semester-project\web-app\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\Users\winbe\GitHub Projects\4-semester-project\web-app\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -1883,7 +1883,6 @@ class CreateBatchComponent {
         });
         this.beerTypes = new Map([[0, "Pilsner"], [1, "Wheat"], [2, "IPA"], [3, "Stout"], [4, "Ale"], [5, "Alcohol Free"]]);
         this.speedTypes = [435, 50, 85, 275, 65, 50];
-        this.selectedValue = "";
         this.startDisabled = false;
         this.startText = "start";
         this.socketIOService.listen("insertData").subscribe(() => {
@@ -1924,11 +1923,10 @@ class CreateBatchComponent {
                 break;
         }
         this.messageForm.reset();
-        this.selectedValue = "";
     }
 }
 CreateBatchComponent.ɵfac = function CreateBatchComponent_Factory(t) { return new (t || CreateBatchComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_socketio_service__WEBPACK_IMPORTED_MODULE_2__["SocketIOService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormBuilder"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"])); };
-CreateBatchComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: CreateBatchComponent, selectors: [["app-create-batch"]], decls: 11, vars: 8, consts: [[1, "container", "enableFlex", "columnFlex", "centerFlex", "shadow"], [1, "enableFlex", "rowFlex", "centerFlex", "wrapFlex", 3, "formGroup", "ngSubmit"], ["formControlName", "productType", 1, "shadow", 3, "ngModel", "ngModelChange"], ["value", "", 3, "disabled"], [3, "value", 4, "ngFor", "ngForOf"], ["type", "number", "formControlName", "productAmount", "placeholder", "Enter amount...", 1, "shadow"], ["id", "btnStart", "type", "submit", 1, "btnDefault", "btnSuccess", "shadow", 3, "disabled", "value"], [3, "value"]], template: function CreateBatchComponent_Template(rf, ctx) { if (rf & 1) {
+CreateBatchComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: CreateBatchComponent, selectors: [["app-create-batch"]], decls: 11, vars: 6, consts: [[1, "container", "enableFlex", "columnFlex", "centerFlex", "shadow"], [1, "enableFlex", "rowFlex", "centerFlex", "wrapFlex", 3, "formGroup", "ngSubmit"], ["formControlName", "productType", 1, "shadow"], ["disabled", "", "value", "null"], [3, "value", 4, "ngFor", "ngForOf"], ["type", "number", "formControlName", "productAmount", "placeholder", "Enter amount...", 1, "shadow"], ["id", "btnStart", "type", "submit", 1, "btnDefault", "btnSuccess", "shadow", 3, "disabled", "value"], [3, "value"]], template: function CreateBatchComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "h3");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2, "Create batch");
@@ -1936,7 +1934,6 @@ CreateBatchComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdef
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "form", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngSubmit", function CreateBatchComponent_Template_form_ngSubmit_3_listener() { return ctx.sendMessage("start"); });
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "select", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function CreateBatchComponent_Template_select_ngModelChange_4_listener($event) { return ctx.selectedValue = $event; });
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "option", 3);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6, "Choose product type...");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -1950,12 +1947,8 @@ CreateBatchComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdef
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formGroup", ctx.messageForm);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx.selectedValue);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", true);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](8, 6, ctx.beerTypes));
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](8, 4, ctx.beerTypes));
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpropertyInterpolate"]("value", ctx.startText);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", ctx.startDisabled);
@@ -2170,7 +2163,7 @@ function MainSingleBatchReport_div_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r0.batch.Type);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r0.logs.ProdProcessedCount[ctx_r0.logs.ProdProcessedCount.length - 1]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r0.logs.ProdProcessedCount[ctx_r0.logs.ProdProcessedCount.length - 1] || 0);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r0.logs.ProdProcessedCount[ctx_r0.logs.ProdProcessedCount.length - 1] - ctx_r0.logs.ProdDefectiveCount[ctx_r0.logs.ProdDefectiveCount.length - 1] || 0);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
@@ -2203,7 +2196,7 @@ MainSingleBatchReport.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.batch != undefined);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.batch != undefined && ctx.logs != undefined);
     } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgIf"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterLink"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["DecimalPipe"]], styles: ["h1[_ngcontent-%COMP%] {\r\n    margin-bottom: 10px;\r\n    font-size: 1.7em;\r\n    color: var(--primary-text-color);\r\n}\r\n\r\nspan[_ngcontent-%COMP%] {\r\n    border-bottom: 1px solid var(--batch-row-border-color);\r\n}\r\n\r\nspan[_ngcontent-%COMP%]:last-of-type {\r\n    border: 0;\r\n    margin-top: 35px;\r\n}\r\n\r\nspan[_ngcontent-%COMP%]   p[_ngcontent-%COMP%]:last-of-type {\r\n    font-style: italic;\r\n}\r\n\r\np[_ngcontent-%COMP%] {\r\n    color: var(--third-text-color);\r\n    font-size: 1.1em;\r\n    margin: 35px 0 35px 0;\r\n}\r\n\r\n@media (max-width: 800px) {\r\n    h1[_ngcontent-%COMP%] {\r\n        font-size: 1.3em;\r\n    }\r\n    p[_ngcontent-%COMP%] {\r\n        font-size: 0.9em;\r\n    }\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4tc2luZ2xlLWJhdGNoLXJlcG9ydC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksbUJBQW1CO0lBQ25CLGdCQUFnQjtJQUNoQixnQ0FBZ0M7QUFDcEM7O0FBRUE7SUFDSSxzREFBc0Q7QUFDMUQ7O0FBRUE7SUFDSSxTQUFTO0lBQ1QsZ0JBQWdCO0FBQ3BCOztBQUVBO0lBQ0ksa0JBQWtCO0FBQ3RCOztBQUVBO0lBQ0ksOEJBQThCO0lBQzlCLGdCQUFnQjtJQUNoQixxQkFBcUI7QUFDekI7O0FBRUE7SUFDSTtRQUNJLGdCQUFnQjtJQUNwQjtJQUNBO1FBQ0ksZ0JBQWdCO0lBQ3BCO0FBQ0oiLCJmaWxlIjoibWFpbi1zaW5nbGUtYmF0Y2gtcmVwb3J0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJoMSB7XHJcbiAgICBtYXJnaW4tYm90dG9tOiAxMHB4O1xyXG4gICAgZm9udC1zaXplOiAxLjdlbTtcclxuICAgIGNvbG9yOiB2YXIoLS1wcmltYXJ5LXRleHQtY29sb3IpO1xyXG59XHJcblxyXG5zcGFuIHtcclxuICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCB2YXIoLS1iYXRjaC1yb3ctYm9yZGVyLWNvbG9yKTtcclxufVxyXG5cclxuc3BhbjpsYXN0LW9mLXR5cGUge1xyXG4gICAgYm9yZGVyOiAwO1xyXG4gICAgbWFyZ2luLXRvcDogMzVweDtcclxufVxyXG5cclxuc3BhbiBwOmxhc3Qtb2YtdHlwZSB7XHJcbiAgICBmb250LXN0eWxlOiBpdGFsaWM7XHJcbn1cclxuXHJcbnAge1xyXG4gICAgY29sb3I6IHZhcigtLXRoaXJkLXRleHQtY29sb3IpO1xyXG4gICAgZm9udC1zaXplOiAxLjFlbTtcclxuICAgIG1hcmdpbjogMzVweCAwIDM1cHggMDtcclxufVxyXG5cclxuQG1lZGlhIChtYXgtd2lkdGg6IDgwMHB4KSB7XHJcbiAgICBoMSB7XHJcbiAgICAgICAgZm9udC1zaXplOiAxLjNlbTtcclxuICAgIH1cclxuICAgIHAge1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMC45ZW07XHJcbiAgICB9XHJcbn0iXX0= */"] });
 
 

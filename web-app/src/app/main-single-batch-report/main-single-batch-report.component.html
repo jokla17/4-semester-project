@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <div class="container" *ngIf="batch != undefined">
+    <div class="container" *ngIf="batch != undefined && logs != undefined">
         <h1>Batch ID ({{ batch.BatchId }})</h1>
         <span class="enableFlex rowFlex spaceBetweenFlex">
             <p>Created</p>
@@ -11,7 +11,7 @@
         </span>
         <span class="enableFlex rowFlex spaceBetweenFlex">
             <p>Amount processed</p>
-            <p>{{ logs.ProdProcessedCount[logs.ProdProcessedCount.length-1] }}</p>
+            <p>{{ logs.ProdProcessedCount[logs.ProdProcessedCount.length-1] || 0 }}</p>
         </span>
         <span class="enableFlex rowFlex spaceBetweenFlex">
             <p>Acceptable</p>

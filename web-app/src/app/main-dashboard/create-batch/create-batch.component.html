@@ -2,8 +2,8 @@
     <h3>Create batch</h3>
 
     <form class="enableFlex rowFlex centerFlex wrapFlex " [formGroup]="messageForm" (ngSubmit)="sendMessage('start')">
-        <select class="shadow" formControlName="productType" [(ngModel)]="selectedValue">
-            <option value="" [disabled]="true">Choose product type...</option>
+        <select class="shadow" formControlName="productType">
+            <option disabled value="null">Choose product type...</option>
             <option *ngFor="let type of beerTypes | keyvalue" value="{{ type.key }}">{{ type.value }}</option>
           </select>
         <input class="shadow" type="number" formControlName="productAmount" placeholder="Enter amount...">

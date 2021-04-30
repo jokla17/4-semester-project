@@ -9,7 +9,6 @@ import { FormControl, FormBuilder } from '@angular/forms';
 })
 export class CreateBatchComponent {
     public beerTypes: Map<number, String>;
-    public selectedValue;
     private speedTypes: number[];
     public startDisabled;
     public startText;
@@ -28,7 +27,6 @@ export class CreateBatchComponent {
     ){
         this.beerTypes = new Map([[0, "Pilsner"], [1, "Wheat"], [2, "IPA"], [3, "Stout"], [4, "Ale"], [5, "Alcohol Free"]]);
         this.speedTypes = [435, 50, 85, 275, 65, 50];
-        this.selectedValue = "";
         this.startDisabled = false;
         this.startText = "start";
 
@@ -75,6 +73,5 @@ export class CreateBatchComponent {
         }
 
         this.messageForm.reset();
-        this.selectedValue = "";
     }
 }
