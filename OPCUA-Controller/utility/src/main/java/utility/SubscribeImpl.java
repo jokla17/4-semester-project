@@ -50,16 +50,14 @@ public class SubscribeImpl extends Thread {
             this.start();
         }
 
-        logs = new HashMap<String, ArrayList<Object>>();
-        {
+        logs = new HashMap<String, ArrayList<Object>>(); {
             logs.put("ProdProcessedCount", new ArrayList<Object>());
             logs.put("Humidity", new ArrayList<Object>());
             logs.put("Temperature", new ArrayList<Object>());
             logs.put("Vibration", new ArrayList<Object>());
             logs.put("ProdDefectiveCount", new ArrayList<Object>());
             logs.put("State", new ArrayList<Object>());
-        }
-        ;
+        };
     }
 
     public static MonitoredItemCreateRequest createMonitoredItem(String identifier) {
@@ -67,18 +65,15 @@ public class SubscribeImpl extends Thread {
         MonitoringParameters parameters = new MonitoringParameters(clientHandle, 500.0, null, Unsigned.uint(10), true);
         NodeId nodeId = new NodeId(6, identifier);
         ReadValueId readValueId = new ReadValueId(nodeId, AttributeId.Value.uid(), null, null);
-        MonitoredItemCreateRequest micr = new MonitoredItemCreateRequest(readValueId, MonitoringMode.Reporting,
-                parameters);
+        MonitoredItemCreateRequest micr = new MonitoredItemCreateRequest(readValueId, MonitoringMode.Reporting, parameters);
         return micr;
     }
 
     @Override
     public void run() {
         try {
-            BiConsumer<UaMonitoredItem, Integer> onItemCreated = (item, id) -> item
-                    .setValueConsumer(SubscribeImpl::onSubscriptionValue);
-            UaSubscription subscription = ServerConnection.getInstance().getSession().getSubscriptionManager()
-                    .createSubscription(1000.0).get();
+            BiConsumer<UaMonitoredItem, Integer> onItemCreated = (item, id) -> item.setValueConsumer(SubscribeImpl::onSubscriptionValue);
+            UaSubscription subscription = ServerConnection.getInstance().getSession().getSubscriptionManager().createSubscription(1000.0).get();
 
             List<UaMonitoredItem> items = subscription.createMonitoredItems(TimestampsToReturn.Both,
                     Arrays.asList(createMonitoredItem(tags.adminTags.get("ProdProcessedCount")),
@@ -107,7 +102,6 @@ public class SubscribeImpl extends Thread {
     }
 
     private static void onSubscriptionValue(UaMonitoredItem item, DataValue value) {
-        // Final
         if (item.getReadValueId().getNodeId().getIdentifier().equals("::Program:Cube.Status.StateCurrent")
                 && value.getValue().getValue().toString().matches("2|5|9|11|17")) {
 
@@ -118,7 +112,6 @@ public class SubscribeImpl extends Thread {
             return;
         }
 
-        // Real time
         if (value.getValue().getValue() != null) {
             String name = tags.nodeMap.get(item.getReadValueId().getNodeId().getIdentifier().toString());
             Object val = value.getValue().getValue();

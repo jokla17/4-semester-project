@@ -88,5 +88,4 @@ public class SocketClient implements ISocketProvider {
     public void sendDataSet(String cmd, Object dataset) {
         socket.emit(cmd, dataset);
     }
-    
 }
