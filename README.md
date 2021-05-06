@@ -7,4 +7,5 @@
 
 ### Tutorial
 1. Place the beer machine [Simulation] folder at your desktop location.
-2. Click on *StartProject.bat*.
+2. Click on [*StartProject.bat*].
+3. Finished.
