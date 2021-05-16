@@ -51,3 +51,19 @@ io.on('connection', (socket) => {
 http.listen(5000, () => {
     console.log('Socket server listening on port 5000...');
 });
+
+
+/* Uncomment code for HTTPS configuration (Need SSL certification)
+
+const fs = require('fs');
+const https = require('https').createServer({
+    key: fs.readFileSync(''),
+    cert: fs.readFileSync(''),
+}, app);
+
+const io = require('socket.io')(https);
+
+https.listen(5000, () => {
+    console.log('Socket server listening on port 5000...');
+});
+*/

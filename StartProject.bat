@@ -1,5 +1,5 @@
 :: Beer machine
-START %userprofile%\desktop\Simulation\Config1\X20CP1586\ar000loader.exe
+START .\Simulation\Config1\X20CP1586\ar000loader.exe
 
 :: Web server
 cd ".\socket-server\"
