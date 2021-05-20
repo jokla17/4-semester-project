@@ -4,9 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ChartsModule } from 'ng2-charts';
-
 import { SocketIOService } from './socketio.service'; 
-
 import { AppComponent } from './app.component';
 import { MainHeaderComponent } from './main-header/main-header.component';
 import { MainNavigationComponent } from './main-navigation/main-navigation.component';
@@ -27,6 +25,7 @@ import { BatchReportsTable } from './main-batch-reports/batch-reports-table/batc
 import { MainSingleBatchReport } from './main-single-batch-report/main-single-batch-report.component';
 import { BarchartComponent } from './main-statistical-analysis/barchart/barchart.component';
 import { LinechartComponent } from './main-statistical-analysis/linechart/linechart.component';
+import { BatchService } from './batch.service';
 
 @NgModule({
   declarations: [
@@ -69,7 +68,7 @@ import { LinechartComponent } from './main-statistical-analysis/linechart/linech
     ]),
     ChartsModule
   ],
-  providers: [ SocketIOService, AssetsService ],
+  providers: [ SocketIOService, AssetsService, BatchService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}

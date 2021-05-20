@@ -3,7 +3,6 @@ import { ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
 import { SocketIOService } from "src/app/socketio.service";
 
-
 @Component({
     selector : "app-linechart",
     templateUrl : "./linechart.component.html",
@@ -74,7 +73,12 @@ export class LinechartComponent {
         public socketIOService : SocketIOService
     ) {
         this.socketIOService.listen("selectLogs").subscribe((data) => {
-            this.initLineChart(data);
+            if (data != null) {
+                this.initLineChart(data);
+                document.getElementById("statsInput").style.borderColor = getComputedStyle(document.documentElement).getPropertyValue('--input-border-color');
+            } else {
+                document.getElementById("statsInput").style.borderColor = getComputedStyle(document.documentElement).getPropertyValue('--error-color');
+            }
         })
     }
 

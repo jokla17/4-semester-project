@@ -20,12 +20,16 @@ export class MainSingleBatchReport {
 
         this.socketIOService.emit("selectBatch", batchIdFromRoute);
         this.socketIOService.listen("selectBatch").subscribe((data) => {
-            this.batch = data;
+            if (data != null) {
+                this.batch = data;
+            }
         });
 
         this.socketIOService.emit("selectLogs", batchIdFromRoute);
         this.socketIOService.listen("selectLogs").subscribe((data) => {
-            this.logs = data;
+            if (data != null) {
+                this.logs = data;
+            }
         });
     }
 }

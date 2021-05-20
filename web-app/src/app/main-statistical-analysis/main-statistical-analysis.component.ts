@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
-import { Color, Label } from 'ng2-charts';
 import { SocketIOService } from '../socketio.service';
 
 @Component({

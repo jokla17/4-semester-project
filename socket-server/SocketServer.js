@@ -40,7 +40,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('selectLogs', (data) => {
-        dbmanager.selectSpecificData("production_logs", data, (callback) => io.emit('selectLogs', callback));
+        dbmanager.selectSpecificData("production_logs", data, (callback) => { io.emit('selectLogs', callback) });
     });
 
     socket.on('disconnect', () => {

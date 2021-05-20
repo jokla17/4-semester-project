@@ -1,11 +1,7 @@
-import { Component, DebugElement } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder, FormControl } from '@angular/forms';
-import { By } from '@angular/platform-browser';
+import { TestBed } from '@angular/core/testing';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AssetsService } from './assets.service';
 import { MainBatchReports } from './main-batch-reports/main-batch-reports.component';
@@ -17,7 +13,6 @@ import { MainNavigationComponent } from './main-navigation/main-navigation.compo
 import { MainStatisticalAnalysis } from './main-statistical-analysis/main-statistical-analysis.component';
 import { SocketIOService } from './socketio.service';
 import { SearchBarComponent } from './main-header/search-bar/search-bar.component';
-
 
 describe('AppComponent', () => {
   beforeEach(async () => {

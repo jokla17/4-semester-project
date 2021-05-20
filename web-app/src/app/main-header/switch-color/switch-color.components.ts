@@ -45,7 +45,8 @@ export class SwitchColorComponent {
             ["--input-border-bg-color", "#ffffff"],
             ["--batch-row-hover-color", "#f4f6fa"],
             ["--batch-row-border-color", "#d1d6e0"],
-            ["--footer-bg-color", "rgba(255, 255, 255, 0.75)"]
+            ["--footer-bg-color", "rgba(255, 255, 255, 0.75)"],
+            ["--error-color", " #eb2f06"]
         ]);
         this.darkThemeColors = new Map<String, String>([
             ["--body-bg-color", "#2c3e50"],
@@ -77,7 +78,8 @@ export class SwitchColorComponent {
             ["--input-border-bg-color", "#354a5e"],
             ["--batch-row-hover-color", "#2c3e50"],
             ["--batch-row-border-color", "#2c3e50"],
-            ["--footer-bg-color", "rgba(0, 0, 0, 0.75)"]
+            ["--footer-bg-color", "rgba(0, 0, 0, 0.75)"],
+            ["--error-color", " #eb2f06"]
         ]);
     }
 

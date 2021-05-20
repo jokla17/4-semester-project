@@ -1,0 +1,100 @@
+[{
+  "_id": {
+    "$oid": "60856f7603e28ba93e441dd4"
+  },
+  "BatchId": 1,
+  "CurSpeed": 72.5,
+  "DateTime": "25-04-2021 15:32:38",
+  "Products": 20,
+  "Type": "Pilsner"
+},{
+  "_id": {
+    "$oid": "5fbcf6b5fcb8b61ef2dfe7c8"
+  },
+  "BatchId": 2,
+  "CurSpeed": 70.833336,
+  "DateTime": "24-11-2020 13:04:22",
+  "Type": "Pilsner",
+  "Products": 100
+},{
+  "_id": {
+    "$oid": "5fbcf8f3fcb8b61ef2e17bd2"
+  },
+  "BatchId": 3,
+  "CurSpeed": 66.666664,
+  "DateTime": "24-11-2020 13:14:11",
+  "Type": "Wheat",
+  "Products": 100
+},{
+  "_id": {
+    "$oid": "5fbcfc32fcb8b61ef2e33827"
+  },
+  "BatchId": 4,
+  "CurSpeed": 41.666668,
+  "DateTime": "24-11-2020 13:28:19",
+  "Type": "Wheat",
+  "Products": 100
+},{
+  "_id": {
+    "$oid": "5fbcfdd5fcb8b61ef2e47520"
+  },
+  "BatchId": 5,
+  "CurSpeed": 56.666668,
+  "DateTime": "24-11-2020 13:35:42",
+  "Type": "IPA",
+  "Products": 100
+},{
+  "_id": {
+    "$oid": "5fbcfe97fcb8b61ef2e4f7b3"
+  },
+  "BatchId": 6,
+  "CurSpeed": 66.666664,
+  "DateTime": "24-11-2020 13:38:45",
+  "Type": "IPA",
+  "Products": 100
+},{
+  "_id": {
+    "$oid": "5fbd003cfcb8b61ef2e606f8"
+  },
+  "BatchId": 7,
+  "CurSpeed": 50,
+  "DateTime": "24-11-2020 13:45:46",
+  "Type": "Stout",
+  "Products": 100
+},{
+  "_id": {
+    "$oid": "5fbd00b3fcb8b61ef2e64c40"
+  },
+  "BatchId": 8,
+  "CurSpeed": 60,
+  "DateTime": "24-11-2020 13:47:35",
+  "Type": "Stout",
+  "Products": 100
+},{
+  "_id": {
+    "$oid": "5fbd025afcb8b61ef2e7103e"
+  },
+  "BatchId": 9,
+  "CurSpeed": 55,
+  "DateTime": "24-11-2020 13:55:38",
+  "Type": "Ale",
+  "Products": 100
+},{
+  "_id": {
+    "$oid": "5fbd0314fcb8b61ef2e78959"
+  },
+  "BatchId": 10,
+  "CurSpeed": 65,
+  "DateTime": "24-11-2020 13:58:27",
+  "Type": "Ale",
+  "Products": 100
+},{
+  "_id": {
+    "$oid": "5fbd03fafcb8b61ef2e7ebe3"
+  },
+  "BatchId": 11,
+  "CurSpeed": 60,
+  "DateTime": "24-11-2020 14:02:04",
+  "Type": "Alcohol Free",
+  "Products": 100
+}]

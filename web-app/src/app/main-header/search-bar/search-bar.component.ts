@@ -23,7 +23,12 @@ export class SearchBarComponent {
         this.searchBatch = "";
 
         this.socketIOService.listen("selectBatch").subscribe((data) => {
-            this.searchBatch = data;
+            if (data != null) {
+                this.searchBatch = data; 
+            } else {
+                document.getElementById("batch").style.display = "none";
+                document.getElementById("searchInput").style.boxShadow = "inset 0px 0px 5px rgba(255, 63, 52, 1.0)";        
+            }
         })
     }
 
@@ -35,6 +40,7 @@ export class SearchBarComponent {
 
             if (searchValue != 0) {
                 this.socketIOService.emit("selectBatch", Number(this.searchForm.value.searchValue.match(/\d+/g)));
+                document.getElementById("searchInput").style.boxShadow = "inset 0px 0px 5px rgba(68, 68, 68, 0.1)";
                 document.getElementById("batch").style.display = "block";
             } else {
                 document.getElementById("batch").style.display = "none";

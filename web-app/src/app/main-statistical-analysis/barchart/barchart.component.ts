@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
-import { Color, Label } from 'ng2-charts';
+import { Label } from 'ng2-charts';
 import { SocketIOService } from "src/app/socketio.service";
 
 @Component({
@@ -58,7 +58,12 @@ export class BarchartComponent {
         public socketIOService: SocketIOService
     ) {
         this.socketIOService.listen("selectLogs").subscribe((data) => {
-            this.initBarChart(data);
+            if (data != null) {
+                this.initBarChart(data); 
+                document.getElementById("statsInput").style.borderColor = getComputedStyle(document.documentElement).getPropertyValue('--input-border-color');
+            } else {
+                document.getElementById("statsInput").style.borderColor = getComputedStyle(document.documentElement).getPropertyValue('--error-color');
+            }
         })
     }
 
