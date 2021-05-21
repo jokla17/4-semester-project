@@ -7,5 +7,5 @@ START StartWebServer.bat
 START http://localhost:5000
 
 :: Opcua client 
-cd "..\opcua-controller\"
+cd "..\OPCUA-Controller\"
 START java -jar StartOpcuaClient.jar
