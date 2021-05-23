@@ -57,7 +57,7 @@ export class LinechartComponent {
             display: true,
             fontSize: 18,
             fontColor: getComputedStyle(document.documentElement).getPropertyValue('--third-text-color'),
-            text: 'Produced product over time'
+            text: 'Produced products over time'
         },
         legend: {
             labels: {
