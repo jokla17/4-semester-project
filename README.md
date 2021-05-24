@@ -6,6 +6,6 @@
 * OPCUA client  
 
 ### Tutorial
-1. Place the beer machine [Simulation] folder at your desktop location.
+1. Place the beer machine [Simulation] folder within the project folder.
 2. Click on [*StartProject.bat*].
 3. Finished.
