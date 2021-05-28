@@ -23,8 +23,8 @@
             <p>{{ logs.ProdDefectiveCount[logs.ProdDefectiveCount.length-1] || 0 }}</p>
         </span>
         <span class="enableFlex rowFlex spaceBetweenFlex">
-            <p>Speed used</p>
-            <p>{{ batch.CurSpeed | number: '1.0-0' }}</p>
+            <p>Relative Speed</p>
+            <p>{{ batch.CurSpeed | number: '1.0-0' }}%</p>
         </span>
         <span class="enableFlex rowFlex centerRightFlex">
             <button [routerLink]="['/statistical-analysis/batch', batch.BatchId]" class="btnDefault btnSuccess">Show statistics</button>
